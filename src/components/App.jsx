@@ -1,5 +1,94 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { RainbowButton } from "@/registry/magicui/rainbow-button"
+import { ShowcaseSparkles } from "@/components/ShowcaseSparkles"
+import { CometCard } from "@/components/ui/comet-card"
+import { Marquee } from "@/registry/magicui/marquee"
+import { AnimatedTooltip } from "@/components/ui/animated-tooltip"
+
+function usePageZoom() {
+  const appRef = useRef(null)
+  useEffect(() => {
+    const handleResize = () => {
+      if (!appRef.current) return
+      appRef.current.style.zoom = "1"
+      const vw = document.documentElement.clientWidth
+      const zoom = Math.min(1, vw / 1440)
+      appRef.current.style.zoom = zoom
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+  return appRef
+}
+
+const userData = [
+  { name: "Jenny", signature: "个人签名", level: "23", value: "¥2203.0", games: "49", hours: "253h", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jenny" },
+  { name: "Jone", signature: "个人签名", level: "10", value: "¥13915.1", games: "227", hours: "984h", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jone" },
+  { name: "Jilly", signature: "个人签名", level: "10", value: "¥376555.1", games: "3413", hours: "2661h", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jilly" },
+  { name: "Jack", signature: "个人签名", level: "10", value: "¥1916", games: "172", hours: "399h", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jack" },
+  { name: "Jane", signature: "个人签名", level: "10", value: "¥18.9", games: "1", hours: "97h", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jane" },
+  { name: "James", signature: "个人签名", level: "10", value: "¥5420", games: "88", hours: "120h", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=James" },
+  { name: "Alice", signature: "个人签名", level: "15", value: "¥890.0", games: "32", hours: "150h", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alice" },
+  { name: "Bob", signature: "个人签名", level: "12", value: "¥2500.5", games: "110", hours: "420h", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Bob" },
+  { name: "Charlie", signature: "个人签名", level: "8", value: "¥120.0", games: "5", hours: "20h", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie" },
+  { name: "David", signature: "个人签名", level: "20", value: "¥15600", games: "450", hours: "1200h", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=David" },
+]
+
+const firstRow = userData.slice(0, 5);
+const secondRow = userData.slice(5, 10);
+
+const gameCovers = [
+  { id: 1, name: "黑神话：悟空", designation: "动作RPG", image: "/Rectangle 1161.png" },
+  { id: 2, name: "艾尔登法环", designation: "开放世界RPG", image: "/Rectangle 1163.png" },
+  { id: 3, name: "博德之门3", designation: "角色扮演", image: "/Rectangle 1165.png" },
+  { id: 4, name: "赛博朋克2077", designation: "动作冒险", image: "/Rectangle 1167.png" },
+  { id: 5, name: "只狼", designation: "动作冒险", image: "/Rectangle 1169.png" },
+  { id: 6, name: "战神：诸神黄昏", designation: "动作冒险", image: "/Rectangle 1171.png" },
+];
+
+const UserPopupCard = ({ user }) => (
+  <div className="user-popup">
+    <div className="user-popup-top">
+      <div className="user-info">
+        <div className="user-avatar">
+          <img src={user.avatar} alt="avatar" />
+        </div>
+        <div className="user-details">
+          <span className="user-name">{user.name}</span>
+          <span className="user-signature">{user.signature}</span>
+        </div>
+      </div>
+      <div className="user-level-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+          <circle cx="25" cy="25" r="24" stroke="#BF654A" strokeWidth="2" />
+        </svg>
+        <span>{user.level}</span>
+      </div>
+    </div>
+    <div className="user-stats-bar">
+      <div className="user-stat-item">
+        <span className="user-stat-value">{user.value}</span>
+        <span className="user-stat-label">
+          账号价值
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.33331 10.6666V7.99992C7.33331 7.63173 7.63179 7.33325 7.99998 7.33325C8.36817 7.33325 8.66665 7.63173 8.66665 7.99992V10.6666C8.66665 11.0348 8.36817 11.3333 7.99998 11.3333C7.63179 11.3333 7.33331 11.0348 7.33331 10.6666Z" fill="#BAD7F5" fillOpacity="0.65" />
+            <path d="M7.99998 4.33325C8.55227 4.33325 8.99998 4.78097 8.99998 5.33325C8.99996 5.88552 8.55225 6.33325 7.99998 6.33325C7.44771 6.33325 7 5.88552 6.99998 5.33325C6.99998 4.78097 7.44769 4.33325 7.99998 4.33325Z" fill="#BAD7F5" fillOpacity="0.65" />
+            <path fillRule="evenodd" clipRule="evenodd" d="M7.99998 1.33325C11.6818 1.33325 14.6666 4.31802 14.6666 7.99992C14.6666 11.6818 11.6818 14.6666 7.99998 14.6666C4.31808 14.6666 1.33331 11.6818 1.33331 7.99992C1.33331 4.31802 4.31808 1.33325 7.99998 1.33325ZM7.99998 2.66659C5.05446 2.66659 2.66665 5.0544 2.66665 7.99992C2.66665 10.9455 5.05446 13.3333 7.99998 13.3333C10.9455 13.3333 13.3333 10.9455 13.3333 7.99992C13.3333 5.0544 10.9455 2.66659 7.99998 2.66659Z" fill="#BAD7F5" fillOpacity="0.65" />
+          </svg>
+        </span>
+      </div>
+      <div className="user-stat-item">
+        <span className="user-stat-value">{user.games}</span>
+        <span className="user-stat-label">游戏数量</span>
+      </div>
+      <div className="user-stat-item">
+        <span className="user-stat-value">{user.hours}</span>
+        <span className="user-stat-label">游戏时长</span>
+      </div>
+    </div>
+  </div>
+)
 
 function BrandIcon() {
   return (
@@ -157,9 +246,10 @@ function DownloadModal({ onClose }) {
 
 export default function App() {
   const [showDownload, setShowDownload] = useState(false)
+  const appRef = usePageZoom()
 
   return (
-    <main className="app">
+    <main className="app" ref={appRef}>
       {showDownload && <DownloadModal onClose={() => setShowDownload(false)} />}
 
       <header className="app-header">
@@ -205,7 +295,113 @@ export default function App() {
           </button>
         </div>
         <p className="hero-caption">本次内测仅支持 Mac M 系列芯片</p>
-        <div className="hero-showcase" />
+        <div className="hero-showcase">
+          <ShowcaseSparkles />
+        </div>
+        <div className="showcase-content">
+          <h2 className="showcase-title">畅玩 Windows 游戏</h2>
+          <p className="showcase-subtitle">
+            突破硬件设备局限性，在Mac 也能体验 Windows 3A 大作
+          </p>
+          <div className="showcase-grid">
+            <CometCard className="showcase-box showcase-box-small">
+              <div className="showcase-box-icon">
+                <svg width="396" height="405" viewBox="0 0 396 405" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path opacity="0.4" d="M273.942 232.22C281.222 242.548 289.568 249.225 298.979 252.252C294.895 264.894 288.413 278.07 279.535 291.781C265.863 312.436 252.368 322.763 239.051 322.763C234.079 322.763 226.71 321.072 216.944 317.688C207.888 314.305 199.986 312.614 193.239 312.614C186.492 312.614 179.034 314.394 170.866 317.955C162.343 321.339 155.329 323.03 149.825 323.03C133.844 323.03 118.129 309.409 102.681 282.166C87.2332 255.279 79.5092 228.837 79.5092 202.841C79.5092 178.803 85.3688 159.128 97.088 143.815C109.162 128.502 124.078 120.845 141.834 120.845C145.741 120.845 150.091 121.335 154.885 122.314C159.679 123.293 164.651 125.118 169.801 127.789C175.305 130.816 179.833 132.909 183.384 134.066C186.936 135.223 189.688 135.802 191.641 135.802C193.949 135.802 197.501 135.268 202.295 134.199C207.089 133.131 211.883 131.172 216.678 128.324C221.827 125.475 226.266 123.338 229.995 121.913C233.724 120.489 237.541 119.777 241.448 119.777C253.877 119.777 265.064 123.16 275.007 129.926C280.334 133.487 285.75 138.74 291.255 145.684C283.087 152.807 277.138 159.039 273.409 164.38C266.484 174.352 263.022 185.213 263.022 196.965C263.022 209.963 266.662 221.715 273.942 232.22ZM220.406 107.491C214.192 113.367 208.51 117.195 203.36 118.975C201.585 119.51 199.321 119.999 196.568 120.444C193.816 120.89 190.664 121.29 187.113 121.646C187.291 105.977 191.375 92.4448 199.365 81.0491C207.355 69.6534 220.495 61.8188 238.784 57.5454C239.139 59.326 239.406 60.5724 239.583 61.2846V64.2226C239.583 70.6327 238.074 77.844 235.055 85.8567C231.859 93.6912 226.976 100.903 220.406 107.491Z" stroke="url(#paint0_linear_12_863)" strokeWidth="12.7709" />
+                  <path opacity="0.4" d="M273.942 232.22C281.222 242.548 289.568 249.225 298.979 252.252C294.895 264.894 288.413 278.07 279.535 291.781C265.863 312.436 252.368 322.763 239.051 322.763C234.079 322.763 226.71 321.072 216.944 317.688C207.888 314.305 199.986 312.614 193.239 312.614C186.492 312.614 179.034 314.394 170.866 317.955C162.343 321.339 155.329 323.03 149.825 323.03C133.844 323.03 118.129 309.409 102.681 282.166C87.2332 255.279 79.5092 228.837 79.5092 202.841C79.5092 178.803 85.3688 159.128 97.088 143.815C109.162 128.502 124.078 120.845 141.834 120.845C145.741 120.845 150.091 121.335 154.885 122.314C159.679 123.293 164.651 125.118 169.801 127.789C175.305 130.816 179.833 132.909 183.384 134.066C186.936 135.223 189.688 135.802 191.641 135.802C193.949 135.802 197.501 135.268 202.295 134.199C207.089 133.131 211.883 131.172 216.678 128.324C221.827 125.475 226.266 123.338 229.995 121.913C233.724 120.489 237.541 119.777 241.448 119.777C253.877 119.777 265.064 123.16 275.007 129.926C280.334 133.487 285.75 138.74 291.255 145.684C283.087 152.807 277.138 159.039 273.409 164.38C266.484 174.352 263.022 185.213 263.022 196.965C263.022 209.963 266.662 221.715 273.942 232.22ZM220.406 107.491C214.192 113.367 208.51 117.195 203.36 118.975C201.585 119.51 199.321 119.999 196.568 120.444C193.816 120.89 190.664 121.29 187.113 121.646C187.291 105.977 191.375 92.4448 199.365 81.0491C207.355 69.6534 220.495 61.8188 238.784 57.5454C239.139 59.326 239.406 60.5724 239.583 61.2846V64.2226C239.583 70.6327 238.074 77.844 235.055 85.8567C231.859 93.6912 226.976 100.903 220.406 107.491Z" stroke="url(#paint1_linear_12_863)" strokeOpacity="0.2" strokeWidth="1.41899" />
+                  <path d="M273.942 232.22C281.222 242.548 289.568 249.225 298.979 252.252C294.895 264.894 288.413 278.07 279.535 291.781C265.863 312.436 252.368 322.763 239.051 322.763C234.079 322.763 226.71 321.072 216.944 317.688C207.888 314.305 199.986 312.614 193.239 312.614C186.492 312.614 179.034 314.394 170.866 317.955C162.343 321.339 155.329 323.03 149.825 323.03C133.844 323.03 118.129 309.409 102.681 282.166C87.2332 255.279 79.5092 228.837 79.5092 202.841C79.5092 178.803 85.3688 159.128 97.088 143.815C109.162 128.502 124.078 120.845 141.834 120.845C145.741 120.845 150.091 121.335 154.885 122.314C159.679 123.293 164.651 125.118 169.801 127.789C175.305 130.816 179.833 132.909 183.384 134.066C186.936 135.223 189.688 135.802 191.641 135.802C193.949 135.802 197.501 135.268 202.295 134.199C207.089 133.131 211.883 131.172 216.678 128.324C221.827 125.475 226.266 123.338 229.995 121.913C233.724 120.489 237.541 119.777 241.448 119.777C253.877 119.777 265.064 123.16 275.007 129.926C280.334 133.487 285.75 138.74 291.255 145.684C283.087 152.807 277.138 159.039 273.409 164.38C266.484 174.352 263.022 185.213 263.022 196.965C263.022 209.963 266.662 221.715 273.942 232.22ZM220.406 107.491C214.192 113.367 208.51 117.195 203.36 118.975C201.585 119.51 199.321 119.999 196.568 120.444C193.816 120.89 190.664 121.29 187.113 121.646C187.291 105.977 191.375 92.4448 199.365 81.0491C207.355 69.6534 220.495 61.8188 238.784 57.5454C239.139 59.326 239.406 60.5724 239.583 61.2846V64.2226C239.583 70.6327 238.074 77.844 235.055 85.8567C231.859 93.6912 226.976 100.903 220.406 107.491Z" stroke="url(#paint2_radial_12_863)" strokeWidth="0.709494" />
+                  <defs>
+                    <linearGradient id="paint0_linear_12_863" x1="173.635" y1="57.5454" x2="173.635" y2="304.395" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#B2FCFF" />
+                      <stop offset="1" stopColor="#B2FCFF" stopOpacity="0" />
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_12_863" x1="173.635" y1="57.5454" x2="173.635" y2="304.395" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#B2FCFF" />
+                      <stop offset="1" stopColor="#B2FCFF" stopOpacity="0" />
+                    </linearGradient>
+                    <radialGradient id="paint2_radial_12_863" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(173.635 89.2478) rotate(90) scale(245.147 202.657)">
+                      <stop stopColor="white" />
+                      <stop offset="1" stopColor="white" stopOpacity="0" />
+                    </radialGradient>
+                  </defs>
+                </svg>
+                <div className="showcase-box-text">Mac 畅游3A游戏</div>
+              </div>
+            </CometCard>
+            <CometCard className="showcase-box showcase-box-large">
+              <div className="w-full h-full flex flex-col items-center justify-center p-8 relative overflow-hidden">
+                <div className="absolute top-12 text-[#86868B] text-xl font-light tracking-widest">打破壁垒 畅玩无界</div>
+                <div className="relative z-10 text-6xl font-bold text-white/10 select-none pointer-events-none">
+                  GAMEHUB
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center opacity-40">
+                  <div className="w-[500px] h-[300px] bg-blue-500/20 blur-[120px] rounded-full" />
+                </div>
+              </div>
+            </CometCard>
+          </div>
+        </div>
+        <div className="steam-management">
+          <h2 className="steam-management-title">Steam 多账号管理</h2>
+          <p className="steam-management-subtitle">
+            Steam 账号互通，自动同步账号数据和云存档，续玩不脱节
+          </p>
+        </div>
+        <div className="user-popup-container">
+          <Marquee style={{ "--duration": "60s", "--gap": "24px" }}>
+            {firstRow.map((user, j) => (
+              <UserPopupCard key={`r1-${j}`} user={user} />
+            ))}
+          </Marquee>
+          <Marquee reverse style={{ "--duration": "60s", "--gap": "24px" }}>
+            {secondRow.map((user, j) => (
+              <UserPopupCard key={`r2-${j}`} user={user} />
+            ))}
+          </Marquee>
+          <div className="marquee-fade-left" />
+          <div className="marquee-fade-right" />
+        </div>
+        <div className="steam-data-text">
+          我们同步的 Steam 数据
+        </div>
+        <div className="steam-data-section">
+          <img className="steam-data-bg" src="/Background.png" alt="" />
+          <img className="steam-data-center-img" src="/image 213.png" alt="" />
+          <div className="steam-data-grid">
+            <div className="steam-data-card">
+              <div className="game-covers-stack">
+                <AnimatedTooltip items={gameCovers} />
+              </div>
+              <span className="steam-data-card-label">游戏数量</span>
+            </div>
+          </div>
+          <div className="steam-data-grid-right">
+            <div className="steam-data-card steam-data-card-small">
+              <div className="steam-hours-card">
+                <div className="steam-hours-inner">
+                  <span className="steam-hours-value">¥1967.7</span>
+                </div>
+              </div>
+              <span className="steam-data-card-label">账号价值</span>
+            </div>
+          </div>
+          <div className="steam-data-grid-bottom-left">
+            <div className="steam-data-card steam-data-card-small">
+              <div className="steam-hours-card">
+                <div className="steam-hours-inner">
+                  <span className="steam-hours-value">1967.7h</span>
+                </div>
+              </div>
+              <span className="steam-data-card-label">游戏时长</span>
+            </div>
+          </div>
+          <div className="steam-data-grid-bottom-right">
+            <div className="steam-data-card steam-data-card-cloud">
+              <img className="steam-cloud-icon" src="/Group 2 (6).svg" alt="" />
+              <span className="steam-data-card-label">游戏云存档</span>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   )
