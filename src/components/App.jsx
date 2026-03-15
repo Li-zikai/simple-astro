@@ -4,6 +4,7 @@ import { ShowcaseSparkles } from "@/components/ShowcaseSparkles"
 import { CometCard } from "@/components/ui/comet-card"
 import { Marquee } from "@/registry/magicui/marquee"
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip"
+import LaserFlow from "@/components/LaserFlow"
 
 function usePageZoom() {
   const appRef = useRef(null)
@@ -69,6 +70,44 @@ const featurePreviewPhotoRows = [
     { src: "/image 185.png", position: "52% 44%" },
     { src: "/source_image.png", position: "44% 38%" },
   ],
+]
+
+const faqItems = [
+  {
+    question: "盖世游戏是什么？",
+    answer:
+      "盖世游戏以模拟器作为核心能力，结合云游戏技术为玩家带来更畅快的游戏体验，目前已支持安卓移动端和PC端。\n我们会持续提升服务质量，如在使用过程中遇到问题，请通过设置中心提交反馈告知，我们将尽全力解决！未来我们将推出客户端（Windows版、Mac版），欢迎各位关注和支持！",
+  },
+  {
+    question: "为什么PC端的盖世账号与移动端的盖世账号不一致？",
+    answer:
+      "请确认是否使用了同一登录方式（手机号、微信、QQ 等），并检查是否切换到了正确服务器环境；如仍不一致，可在设置中心提交账号信息进行核查。",
+  },
+  {
+    question: "为什么授权登录Steam账号后，无法获取游戏库全部游戏？",
+    answer:
+      "通常与 Steam 隐私设置、网络状态或授权状态有关。请将游戏详情和库存可见性调整为公开后重新授权，再尝试同步。",
+  },
+  {
+    question: "如何换绑/修改盖世账号信息？",
+    answer:
+      "进入设置中心-账号与安全页面即可进行绑定信息管理；部分敏感操作会触发身份验证，以保障账号安全。",
+  },
+  {
+    question: "为什么启动游戏失败，包括但不限于遇到报错、闪退等？",
+    answer:
+      "建议先重启应用并检查网络、系统版本和驱动环境；若问题持续，请在反馈中附带错误截图与日志，方便快速定位。",
+  },
+  {
+    question: "如何查询消费记录？",
+    answer:
+      "可在个人中心-订单记录中查看历史消费与明细，如存在异常账单可发起工单进行核对处理。",
+  },
+  {
+    question: "如何反馈游戏中遇到的问题？",
+    answer:
+      "打开设置中心-问题反馈，提交问题描述、复现步骤与截图/录屏，客服与技术团队会尽快跟进处理。",
+  },
 ]
 
 const UserPopupCard = ({ user }) => (
@@ -152,6 +191,30 @@ function AppleIcon() {
         fill="#09090B"
       />
     </svg>
+  )
+}
+
+function HeroHeadlineBlock({ enText, zhText, subtitle, showDownloadButton = false, onDownload }) {
+  return (
+    <>
+      <div className="hero-headline" aria-label={`${enText} ${zhText}`}>
+        <span className="hero-headline-en">{enText}</span>
+        <span className="hero-headline-zh">{zhText}</span>
+      </div>
+      <p className="hero-subtitle">{subtitle}</p>
+      {showDownloadButton && (
+        <div className="hero-single-action">
+          <button
+            type="button"
+            className="download-button-primary"
+            onClick={onDownload}
+          >
+            <AppleIcon />
+            <span className="download-button-label">立即下载</span>
+          </button>
+        </div>
+      )}
+    </>
   )
 }
 
@@ -270,6 +333,7 @@ function DownloadModal({ onClose }) {
 
 export default function App() {
   const [showDownload, setShowDownload] = useState(false)
+  const [openFaqIndex, setOpenFaqIndex] = useState(0)
   const appRef = usePageZoom()
 
   return (
@@ -300,11 +364,11 @@ export default function App() {
       </header>
       <section className="hero">
         <h1 className="hero-title">盖世游戏</h1>
-        <div className="hero-headline" aria-label="Mac 也可以是游戏机">
-          <span className="hero-headline-en">Mac</span>
-          <span className="hero-headline-zh">也可以是游戏机</span>
-        </div>
-        <p className="hero-subtitle">客户端内测版本抢先体验开启</p>
+        <HeroHeadlineBlock
+          enText="Mac"
+          zhText="也可以是游戏机"
+          subtitle="客户端内测版本抢先体验开启"
+        />
         <div className="hero-actions">
           <button
             type="button"
@@ -1193,12 +1257,77 @@ export default function App() {
               </div>
             </div>
           </div>
+          <section className="faq-section">
+            <h2 className="faq-title">常见问题</h2>
+            <p className="faq-subtitle">副标题</p>
+            <div className="faq-list">
+              {faqItems.map((item, index) => {
+                const isOpen = openFaqIndex === index
+                return (
+                  <article key={item.question} className={`faq-item ${isOpen ? "is-open" : ""}`}>
+                    <button
+                      className="faq-item-trigger"
+                      type="button"
+                      onClick={() => setOpenFaqIndex(isOpen ? -1 : index)}
+                      aria-expanded={isOpen}
+                    >
+                      <span className="faq-item-icon" aria-hidden="true">
+                        {isOpen ? (
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path d="M22.991 17.2578C23.4466 17.7134 23.4466 18.453 22.991 18.9086C22.5354 19.3635 21.7972 19.3638 21.3418 18.9086L14 11.5668L6.65823 18.9086C6.20281 19.3637 5.46457 19.3636 5.00906 18.9086C4.55348 18.453 4.55348 17.7134 5.00906 17.2578L13.1746 9.0922C13.6302 8.63659 14.3699 8.63659 14.8255 9.0922L22.991 17.2578Z" fill="white"/>
+                          </svg>
+                        ) : (
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path d="M22.991 10.7422C23.4466 10.2866 23.4466 9.54698 22.991 9.09136C22.5354 8.63649 21.7972 8.63625 21.3418 9.09136L14 16.4332L6.65823 9.09136C6.20281 8.6363 5.46457 8.63643 5.00906 9.09136C4.55348 9.54698 4.55348 10.2866 5.00906 10.7422L13.1746 18.9078C13.6302 19.3634 14.3699 19.3634 14.8255 18.9078L22.991 10.7422Z" fill="white"/>
+                          </svg>
+                        )}
+                      </span>
+                      <span className="faq-item-question">{item.question}</span>
+                    </button>
+                    {isOpen && (
+                      <div className="faq-item-content">
+                        <p className="faq-item-answer">{item.answer}</p>
+                      </div>
+                    )}
+                  </article>
+                )
+              })}
+            </div>
+            <div className="faq-bottom-logo">
+              <img src="/image 202.png" alt="盖世游戏" className="faq-bottom-logo-image" />
+              <p className="faq-bottom-logo-text">盖世游戏</p>
+            </div>
+            <div className="faq-bottom-headline">
+              <HeroHeadlineBlock
+                enText="Mac"
+                zhText="也可以是游戏机"
+                subtitle="客户端内测版本抢先体验开启"
+                showDownloadButton
+                onDownload={() => setShowDownload(true)}
+              />
+              </div>
+              <div className="faq-bottom-panel">
+                <LaserFlow
+                  className="faq-bottom-panel-laser"
+                  color="#B2FCFF"
+                  horizontalSizing={0.9}
+                  verticalSizing={2.8}
+                  horizontalBeamOffset={0}
+                  verticalBeamOffset={0.0}
+                  wispDensity={1}
+                  wispSpeed={15}
+                  wispIntensity={7}
+                  flowSpeed={0.35}
+                  flowStrength={0.32}
+                  fogIntensity={0.75}
+                  fogScale={0.3}
+                  fogFallSpeed={0.6}
+                  decay={1.1}
+                  falloffStart={1.2}
+                />
+              </div>
+          </section>
         </div>
-      </section>
-
-      <section className="faq-section">
-        <h2 className="faq-title">常见问题</h2>
-        <p className="faq-subtitle">副标题</p>
       </section>
     </main>
   )

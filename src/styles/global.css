@@ -23,7 +23,9 @@ body {
   align-items: center;
   flex-direction: column;
   width: 1440px;
+  max-width: 100%;
   margin: 0 auto;
+  padding-bottom: 0;
 }
 
 .hero {
@@ -56,32 +58,38 @@ body {
 }
 
 .hero-headline-en {
-  color: #fff;
   text-align: center;
   text-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-  font-family: Gilroy, Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-size: 96px;
+  font-family: Gilroy;
+  font-size: 80px;
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
+  background: linear-gradient(93deg, #FAFAFA 24.45%, #A1A1AA 73.78%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-headline-zh {
-  color: #fff;
   text-align: center;
   text-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: MiSans;
   font-size: 80px;
   font-style: normal;
   font-weight: 630;
   line-height: 100%;
+  background: linear-gradient(93deg, #FAFAFA 24.45%, #A1A1AA 73.78%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-subtitle {
   margin: 25px 0 0;
-  color: #86868b;
+  color: #FFF;
   text-align: center;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: MiSans;
   font-size: 28px;
   font-style: normal;
   font-weight: 330;
@@ -717,6 +725,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .feature-preview-glow-wrapper {
@@ -742,7 +751,8 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 260px;
-  padding-bottom: 120px;
+  padding-bottom: 0;
+  width: 100%;
 }
 
 .feature-preview-title {
@@ -1209,14 +1219,9 @@ body {
   width: 100%;
 }
 
-.feature-card-games-marquee-row1 {
-}
-
-.feature-card-games-marquee-row2 {
-}
-
-.feature-card-games-marquee-row3 {
-}
+.feature-card-games-marquee-row1 {}
+.feature-card-games-marquee-row2 {}
+.feature-card-games-marquee-row3 {}
 
 .feature-card-games-image-wrap {
   width: 168px;
@@ -1240,6 +1245,9 @@ body {
 
 .faq-section {
   margin-top: 260px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1264,11 +1272,152 @@ body {
   margin: 20px 0 0;
   color: #86868B;
   text-align: center;
-  font-family: MiSans, system-ui, sans-serif;
+  font-family: MiSans;
   font-size: 20px;
   font-style: normal;
   font-weight: 330;
   line-height: normal;
+}
+
+.faq-list {
+  width: 997px;
+  max-width: calc(100% - 48px);
+  margin-top: 99px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.faq-item {
+  width: 100%;
+  height: 77px;
+  padding: 24px 20px;
+  border-radius: 30px;
+  border: 1px solid var(--10, rgba(186, 215, 245, 0.10));
+  background: var(--5, rgba(186, 215, 245, 0.05));
+  backdrop-filter: blur(15px);
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: height 0.25s ease;
+}
+
+.faq-item.is-open {
+  height: 197px;
+}
+
+.faq-item-trigger {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.faq-item-icon {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faq-item-question {
+  color: #FFF;
+  font-family: MiSans;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 330;
+  line-height: normal;
+  text-align: left;
+}
+
+.faq-item-content {
+  padding: 12px 0 0 48px;
+  box-sizing: border-box;
+}
+
+.faq-item-answer {
+  margin: 0;
+  color: #86868B;
+  font-family: MiSans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 330;
+  line-height: normal;
+  white-space: pre-line;
+}
+
+.faq-bottom-logo {
+  margin-top: 205px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq-bottom-logo-image {
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+.faq-bottom-logo-text {
+  margin: 30px 0 0;
+  color: #FFF;
+  text-align: center;
+  font-family: MiSans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: normal;
+}
+
+.faq-bottom-headline {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.faq-bottom-panel {
+  width: 100%;
+  height: 227px;
+  margin-top: 183px;
+  margin-bottom: 0;
+  position: relative;
+  overflow: visible;
+  border-radius: 48px 48px 0 0;
+  border: 1px solid rgba(250, 250, 250, 0.20);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  background:
+    radial-gradient(61.4% 37.92% at 50% 0%, rgba(178, 252, 255, 0.15) 0%, rgba(9, 9, 11, 0.15) 100%),
+    #09090b;
+  box-sizing: border-box;
+  align-self: stretch;
+}
+
+.faq-bottom-panel-laser {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  top: -600px;
+  height: 1200px;
+  z-index: -1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 49.5%, transparent 50%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 49.5%, transparent 50%);
 }
 
 .compat-setting-title {
@@ -1804,6 +1953,12 @@ body {
   display: inline-flex;
   align-items: flex-start;
   gap: 16px;
+}
+
+.hero-single-action {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .download-button-primary {
