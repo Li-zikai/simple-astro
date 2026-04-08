@@ -1,6 +1,7 @@
 export const filingVariantAttribute = "data-filing-variant"
 export const defaultFilingVariant = "default"
 export const gamemacCnFilingVariant = "gamemac-cn"
+export const gamemacCnHosts = ["gamemac.cn", "www.gamemac.cn"]
 
 const filingLabelOverrides = {
   icp: {

@@ -1,0 +1,7 @@
+apiVersion: v2
+name: gamemac
+description: GameMac 静态网页服务
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+

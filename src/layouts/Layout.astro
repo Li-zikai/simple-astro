@@ -4,11 +4,12 @@ import {
   defaultFilingVariant,
   filingVariantAttribute,
   gamemacCnFilingVariant,
+  gamemacCnHosts,
 } from '../lib/filingVariants.js';
 
 const { title = 'GameHub', lang = 'en' } = Astro.props;
 
-const filingVariantInitScript = `(function(){var host=(window.location.hostname||"").toLowerCase();var variant=${JSON.stringify(defaultFilingVariant)};if(host==="gamemac.cn"||host.endsWith(".gamemac.cn")){variant=${JSON.stringify(gamemacCnFilingVariant)};}document.documentElement.setAttribute(${JSON.stringify(filingVariantAttribute)},variant);}());`;
+const filingVariantInitScript = `(function(){var host=(window.location.hostname||"").toLowerCase();var variant=${JSON.stringify(defaultFilingVariant)};var cnHosts=${JSON.stringify(gamemacCnHosts)};if(cnHosts.indexOf(host)!==-1){variant=${JSON.stringify(gamemacCnFilingVariant)};}document.documentElement.setAttribute(${JSON.stringify(filingVariantAttribute)},variant);}());`;
 ---
 
 <!doctype html>
@@ -88,7 +89,9 @@ const filingVariantInitScript = `(function(){var host=(window.location.hostname|
     width: 100%;
     height: 100%;
   }
+</style>
 
+<style is:global>
   [data-filing-label-variant] {
     display: none;
   }
