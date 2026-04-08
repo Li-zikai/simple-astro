@@ -12,14 +12,21 @@
 ## 1. 构建镜像
 
 ```bash
-# 默认构建 1.1.0 版本
+# 默认读取 deploy/version.txt，并自动递增补丁版本
 bash deploy/build.sh
 
 # 指定版本号构建
-bash deploy/build.sh 1.1.0
+bash deploy/build.sh 1.1.4
 ```
 
 镜像地址：`gamesirnanjing.asuscomm.com:5000/gamehub/gamemac:<版本号>`
+
+版本文件：`deploy/version.txt`
+
+- 文件记录“上次成功构建并推送”的版本号
+- 不传参数执行 `bash deploy/build.sh` 时，会自动将补丁版本 `+1`
+- 传入显式版本时（例如 `bash deploy/build.sh 1.1.4`），成功后也会写回版本文件
+- 只有镜像构建和推送都成功后，版本文件才会更新
 
 ---
 
@@ -29,12 +36,12 @@ bash deploy/build.sh 1.1.0
 # 1. 进入项目根目录
 cd /path/to/gamemac
 
-# 2. 构建并推送 1.1.0 镜像
-bash deploy/build.sh 1.1.0
+# 2. 自动生成下一个版本并构建推送
+bash deploy/build.sh
 
-# 3. 首次安装或升级到 1.1.0
+# 3. 首次安装或升级到新版本
 helm upgrade --install gamemac ./helm/gamemac -n gamehub --create-namespace \
-  --set image.tag="1.1.0"
+  --set image.tag="<上一步输出的版本号>"
 
 # 4. 检查部署结果
 kubectl get pods -n gamehub -l app.kubernetes.io/name=gamemac
@@ -64,7 +71,7 @@ helm install gamemac ./helm/gamemac -n gamehub --create-namespace
 ```bash
 # 自定义镜像版本
 helm install gamemac ./helm/gamemac -n gamehub --create-namespace \
-  --set image.tag="1.1.0"
+  --set image.tag="1.1.4"
 
 # 自定义副本数和域名
 helm install gamemac ./helm/gamemac -n gamehub --create-namespace \
@@ -95,7 +102,7 @@ helm install gamemac ./helm/gamemac -n gamehub --create-namespace -f values-prod
 ```bash
 # 升级到新版本镜像
 helm upgrade gamemac ./helm/gamemac -n gamehub \
-  --set image.tag="1.1.0"
+  --set image.tag="1.1.4"
 ```
 
 ### 升级副本数
@@ -199,20 +206,20 @@ kubectl logs -n gamehub -l app.kubernetes.io/name=gamemac --tail=100 -f
 # 1. 进入项目根目录
 cd /path/to/gamemac
 
-# 2. 构建并推送 1.1.0 镜像
-bash deploy/build.sh 1.1.0
+# 2. 自动递增版本并构建推送
+bash deploy/build.sh
 
 # 3. 首次部署或升级
 helm upgrade --install gamemac ./helm/gamemac -n gamehub --create-namespace \
-  --set image.tag="1.1.0"
+  --set image.tag="<上一步输出的版本号>"
 
 # 4. 验证部署
 kubectl get pods -n gamehub -l app.kubernetes.io/name=gamemac
 kubectl get ingress -n gamehub
 
 # 5. 后续版本更新示例
-bash deploy/build.sh 1.1.1
-helm upgrade gamemac ./helm/gamemac -n gamehub --set image.tag="1.1.1"
+bash deploy/build.sh
+helm upgrade gamemac ./helm/gamemac -n gamehub --set image.tag="<上一步输出的版本号>"
 
 # 6. 如需卸载
 helm uninstall gamemac -n gamehub
