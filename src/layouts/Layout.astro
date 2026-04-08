@@ -1,16 +1,25 @@
 ---
 import '../styles/global.css';
+import {
+  defaultFilingVariant,
+  filingVariantAttribute,
+  gamemacCnFilingVariant,
+} from '../lib/filingVariants.js';
+
 const { title = 'GameHub', lang = 'en' } = Astro.props;
+
+const filingVariantInitScript = `(function(){var host=(window.location.hostname||"").toLowerCase();var variant=${JSON.stringify(defaultFilingVariant)};if(host==="gamemac.cn"||host.endsWith(".gamemac.cn")){variant=${JSON.stringify(gamemacCnFilingVariant)};}document.documentElement.setAttribute(${JSON.stringify(filingVariantAttribute)},variant);}());`;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} data-filing-variant={defaultFilingVariant}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline set:html={filingVariantInitScript}></script>
     <title>{title}</title>
   </head>
   <body>
@@ -78,5 +87,14 @@ const { title = 'GameHub', lang = 'en' } = Astro.props;
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+
+  [data-filing-label-variant] {
+    display: none;
+  }
+
+  html[data-filing-variant="default"] [data-filing-label-variant="default"],
+  html[data-filing-variant="gamemac-cn"] [data-filing-label-variant="gamemac-cn"] {
+    display: inline;
   }
 </style>

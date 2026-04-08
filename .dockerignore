@@ -1,0 +1,8 @@
+helm/
+*.sh
+*.md
+.git
+.gitignore
+.dockerignore
+Dockerfile
+

@@ -4,6 +4,7 @@ import {
   filingLinks,
 } from "@/components/app/constants"
 import { useI18n } from "@/i18n/context"
+import { getFilingLabelVariants } from "@/lib/filingVariants"
 import {
   FaqChevronDownIcon,
   FaqChevronUpIcon,
@@ -57,6 +58,20 @@ function renderFaqAnswer(item) {
   }
 
   return <>{parts}</>
+}
+
+function renderFilingLabel(filing) {
+  const labelVariants = getFilingLabelVariants(filing.linkKey, filing.label)
+
+  if (labelVariants.length === 1) {
+    return labelVariants[0].label
+  }
+
+  return labelVariants.map(({ variant, label }) => (
+    <span key={variant} data-filing-label-variant={variant}>
+      {label}
+    </span>
+  ))
 }
 
 export function FeatureFaqSection({ openFaqIndex, onToggleFaq, onOpenDownload }) {
@@ -149,7 +164,7 @@ export function FeatureFaqSection({ openFaqIndex, onToggleFaq, onOpenDownload })
                           rel="noopener noreferrer"
                           style={{ color: "inherit", textDecoration: "none" }}
                         >
-                          {filing.label}
+                          {renderFilingLabel(filing)}
                         </a>
                         {index < faqFooter.filings.length - 1 && <span className="faq-bottom-panel-footer-sep" />}
                       </div>
