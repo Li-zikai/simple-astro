@@ -37,12 +37,21 @@
   font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 72px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 100%;
-  background: linear-gradient(90deg, #e2c9fb 0%, #bfd9fe 50%, #e2c9fb 100%);
+  letter-spacing: -0.02em;
+  background: linear-gradient(to right, #00C9FF, #92FE9D, #00C9FF);
+  background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .hero-headline-zh {
