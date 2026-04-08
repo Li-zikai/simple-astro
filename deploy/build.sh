@@ -7,7 +7,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 # 镜像配置
 REGISTRY="gamesirnanjing.asuscomm.com:5000"
 IMAGE_NAME="gamehub/gamemac"
-VERSION="${1:-1.0.0}"
+VERSION="${1:-1.1.0}"
 FULL_IMAGE="${REGISTRY}/${IMAGE_NAME}:${VERSION}"
 
 echo "=========================================="

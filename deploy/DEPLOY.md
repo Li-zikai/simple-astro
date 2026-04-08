@@ -12,18 +12,39 @@
 ## 1. 构建镜像
 
 ```bash
-# 默认构建 1.0.0 版本
+# 默认构建 1.1.0 版本
 bash deploy/build.sh
 
 # 指定版本号构建
-bash deploy/build.sh 1.0.1
+bash deploy/build.sh 1.1.0
 ```
 
 镜像地址：`gamesirnanjing.asuscomm.com:5000/gamehub/gamemac:<版本号>`
 
 ---
 
-## 2. Helm 安装
+## 2. 推荐部署步骤
+
+```bash
+# 1. 进入项目根目录
+cd /path/to/gamemac
+
+# 2. 构建并推送 1.1.0 镜像
+bash deploy/build.sh 1.1.0
+
+# 3. 首次安装或升级到 1.1.0
+helm upgrade --install gamemac ./helm/gamemac -n gamehub --create-namespace \
+  --set image.tag="1.1.0"
+
+# 4. 检查部署结果
+kubectl get pods -n gamehub -l app.kubernetes.io/name=gamemac
+kubectl get svc -n gamehub -l app.kubernetes.io/name=gamemac
+kubectl get ingress -n gamehub -l app.kubernetes.io/name=gamemac
+```
+
+---
+
+## 3. Helm 安装
 
 ### 首次安装
 
@@ -43,7 +64,7 @@ helm install gamemac ./helm/gamemac -n gamehub --create-namespace
 ```bash
 # 自定义镜像版本
 helm install gamemac ./helm/gamemac -n gamehub --create-namespace \
-  --set image.tag="1.0.1"
+  --set image.tag="1.1.0"
 
 # 自定义副本数和域名
 helm install gamemac ./helm/gamemac -n gamehub --create-namespace \
@@ -67,14 +88,14 @@ helm install gamemac ./helm/gamemac -n gamehub --create-namespace -f values-prod
 
 ---
 
-## 3. Helm 升级
+## 4. Helm 升级
 
 ### 升级镜像版本
 
 ```bash
 # 升级到新版本镜像
 helm upgrade gamemac ./helm/gamemac -n gamehub \
-  --set image.tag="1.0.1"
+  --set image.tag="1.1.0"
 ```
 
 ### 升级副本数
@@ -94,12 +115,12 @@ helm upgrade gamemac ./helm/gamemac -n gamehub -f values-prod.yaml
 
 ```bash
 helm upgrade gamemac ./helm/gamemac -n gamehub --reuse-values \
-  --set image.tag="1.0.2"
+  --set image.tag="1.1.1"
 ```
 
 ---
 
-## 4. 回滚
+## 5. 回滚
 
 ```bash
 # 查看历史版本
@@ -114,7 +135,7 @@ helm rollback gamemac <revision> -n gamehub
 
 ---
 
-## 5. 卸载
+## 6. 卸载
 
 ```bash
 helm uninstall gamemac -n gamehub
@@ -125,7 +146,7 @@ helm uninstall gamemac -n gamehub
 
 ---
 
-## 6. 常用运维命令
+## 7. 常用运维命令
 
 ```bash
 # 查看部署状态
@@ -152,13 +173,13 @@ kubectl logs -n gamehub -l app.kubernetes.io/name=gamemac --tail=100 -f
 
 ---
 
-## 7. 默认配置参数
+## 8. 默认配置参数
 
 | 参数 | 默认值 | 说明 |
 |------|--------|------|
 | `replicaCount` | `2` | 副本数 |
 | `image.repository` | `gamesirnanjing.asuscomm.com:5000/gamehub/gamemac` | 镜像仓库 |
-| `image.tag` | `1.0.0` | 镜像版本 |
+| `image.tag` | `1.1.0` | 镜像版本 |
 | `image.pullPolicy` | `Always` | 镜像拉取策略 |
 | `service.type` | `ClusterIP` | Service 类型 |
 | `service.port` | `80` | Service 端口 |
@@ -172,25 +193,28 @@ kubectl logs -n gamehub -l app.kubernetes.io/name=gamemac --tail=100 -f
 
 ---
 
-## 8. 完整部署流程示例
+## 9. 完整部署流程示例
 
 ```bash
-# 1. 构建并推送镜像
-bash deploy/build.sh 1.0.0
+# 1. 进入项目根目录
+cd /path/to/gamemac
 
-# 2. 首次部署
-helm install gamemac -n gamehub ./helm/gamemac
-# 3. 验证部署
+# 2. 构建并推送 1.1.0 镜像
+bash deploy/build.sh 1.1.0
+
+# 3. 首次部署或升级
+helm upgrade --install gamemac ./helm/gamemac -n gamehub --create-namespace \
+  --set image.tag="1.1.0"
+
+# 4. 验证部署
 kubectl get pods -n gamehub -l app.kubernetes.io/name=gamemac
 kubectl get ingress -n gamehub
 
-# 4. 后续版本更新
-bash deploy/build.sh 1.0.2
-helm upgrade gamemac ./helm/gamemac -n gamehub --set image.tag="1.0.2"
+# 5. 后续版本更新示例
+bash deploy/build.sh 1.1.1
+helm upgrade gamemac ./helm/gamemac -n gamehub --set image.tag="1.1.1"
 
-
-
-
+# 6. 如需卸载
 helm uninstall gamemac -n gamehub
 ```
 
