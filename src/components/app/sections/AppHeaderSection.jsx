@@ -21,22 +21,6 @@ export function AppHeaderSection({ onOpenDownload }) {
           <img src="/logoo.svg" alt={t.brandAlt} className="header-brand-icon" />
           <BrandTextIcon locale={locale} />
         </div>
-        <nav className="header-nav">
-          {t.header.nav.map((item, index) => (
-            <div
-              className="header-nav-item"
-              key={index}
-              role="button"
-              tabIndex={0}
-              onClick={() => handleNavClick(navTargetIds[index])}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") handleNavClick(navTargetIds[index])
-              }}
-            >
-              {item}
-            </div>
-          ))}
-        </nav>
         <div className="header-action">
           <a className="header-lang-switch" href={t.bottomBar.langSwitchHref}>
             {t.bottomBar.langSwitch}

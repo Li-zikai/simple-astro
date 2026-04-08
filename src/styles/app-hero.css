@@ -1,11 +1,11 @@
 .hero {
-  margin-top: 150px;
+  margin-top: 90px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero-title {
@@ -14,7 +14,7 @@
   margin: 0;
   color: #fff;
   text-align: center;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 450;
@@ -34,39 +34,88 @@
 
 .hero-headline-en {
   text-align: center;
-  font-family: Gilroy;
-  font-size: 80px;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 72px;
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
-  color: #FFFFFF;
+  background: linear-gradient(90deg, #e2c9fb 0%, #bfd9fe 50%, #e2c9fb 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-headline-zh {
   text-align: center;
-  font-family: MiSans;
-  font-size: 80px;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 72px;
   font-style: normal;
-  font-weight: 630;
+  font-weight: 700;
   line-height: 100%;
+  word-spacing: -0.05em;
   background: linear-gradient(93deg, #FAFAFA 24.45%, #A1A1AA 73.78%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.hero-headline-typing {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-typing-sizer {
+  visibility: hidden;
+  white-space: nowrap;
+  display: block;
+}
+
+.hero-typing-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: baseline;
+  background: linear-gradient(93deg, #FAFAFA 24.45%, #A1A1AA 73.78%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-typing-cursor {
+  display: inline-block;
+  font-weight: 300;
+  margin-left: 2px;
+  background: linear-gradient(93deg, #FAFAFA 24.45%, #A1A1AA 73.78%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hero-cursor-blink 0.7s step-end infinite;
+}
+
+@keyframes hero-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 .hero-subtitle {
   position: relative;
   z-index: 20;
   margin: 25px 0 0;
-  color: #FFF;
   text-align: center;
-  font-family: MiSans;
-  font-size: 28px;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 330;
+  font-weight: 500;
   line-height: normal;
+  letter-spacing: 0.04em;
   white-space: nowrap;
+  color: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(90deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.25) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-caption {
@@ -75,7 +124,7 @@
   margin: 16px 0 0;
   color: #86868b;
   text-align: center;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 330;
@@ -88,6 +137,9 @@
   width: 1200px;
   margin-top: 145px;
   display: flex;
+  transform: perspective(1200px) scale(0.78) rotateX(10deg);
+  transform-origin: center bottom;
+  will-change: transform;
 }
 
 .hero-video-container {
@@ -297,7 +349,7 @@
   margin: 0;
   color: #fff;
   text-align: center;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 64px;
   font-style: normal;
   font-weight: 630;
@@ -308,7 +360,7 @@
   margin-top: 20px;
   color: #86868B;
   text-align: center;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 330;
@@ -341,7 +393,7 @@
   margin: 0;
   text-align: center;
   text-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-  font-family: Gilroy, MiSans, system-ui, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 64px;
   font-style: normal;
   font-weight: 700;
@@ -356,7 +408,7 @@
   margin-top: 20px;
   color: #86868B;
   text-align: center;
-  font-family: MiSans, system-ui, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 330;
@@ -381,7 +433,7 @@
   margin-bottom: 0;
   text-align: center;
   text-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-  font-family: Gilroy, MiSans, system-ui, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 36px;
   font-style: normal;
   font-weight: 500;
@@ -497,7 +549,7 @@
 .steam-hours-value {
   color: #FFF;
   text-align: center;
-  font-family: Gilroy, system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;

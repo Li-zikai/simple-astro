@@ -96,7 +96,7 @@
 .modal-tagline {
   margin: 0;
   color: rgba(255, 255, 255, 0.45);
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 13px;
   font-weight: 330;
   line-height: 1.4;
@@ -112,7 +112,7 @@
   background: rgba(110, 231, 183, 0.08);
   border: 1px solid rgba(110, 231, 183, 0.2);
   color: #6ee7b7;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
   font-weight: 380;
   line-height: 1;
@@ -203,7 +203,7 @@
 
 .modal-download-btn span {
   color: #09090b;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 15px;
   font-weight: 500;
   line-height: 1;
@@ -212,7 +212,7 @@
 .modal-system-req {
   margin: 0;
   color: rgba(255, 255, 255, 0.3);
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
   font-weight: 330;
   text-align: center;
@@ -250,14 +250,14 @@
 
 .modal-info-label {
   color: rgba(255, 255, 255, 0.35);
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
   font-weight: 330;
 }
 
 .modal-info-value {
   color: rgba(255, 255, 255, 0.8);
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 13px;
   font-weight: 380;
 }
@@ -281,7 +281,7 @@
 .modal-community-title {
   margin: 0;
   color: #fff;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
 }
@@ -289,7 +289,7 @@
 .modal-community-desc {
   margin: 0;
   color: rgba(255, 255, 255, 0.45);
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
   font-weight: 330;
   line-height: 1.5;
@@ -305,7 +305,7 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 13px;
   font-weight: 380;
   cursor: pointer;
@@ -345,7 +345,7 @@
 .modal-feature-title {
   margin: 0 0 2px;
   color: rgba(255, 255, 255, 0.85);
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 13px;
   font-weight: 450;
 }
@@ -353,7 +353,7 @@
 .modal-feature-desc {
   margin: 0;
   color: rgba(255, 255, 255, 0.35);
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
   font-weight: 330;
   line-height: 1.4;

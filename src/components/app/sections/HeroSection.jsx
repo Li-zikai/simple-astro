@@ -21,6 +21,7 @@ export function HeroSection({ onOpenDownload }) {
   const gameCovers = useGameCovers()
   const [heroImgLoaded, setHeroImgLoaded] = useState(false)
   const heroImgRef = useRef(null)
+  const showcaseRef = useRef(null)
   const heroImageSrc = locale === "en"
     ? "/MacBook-air2.png"
     : "/MacBook-air3.png"
@@ -33,10 +34,29 @@ export function HeroSection({ onOpenDownload }) {
     }
   }, [heroImageSrc])
 
+  useEffect(() => {
+    const el = showcaseRef.current
+    if (!el) return
+
+    // 使用 getBoundingClientRect 配合 requestAnimationFrame 代替 scroll 事件
+    let rafId
+    const update = () => {
+      const rect = el.getBoundingClientRect()
+      const viewH = window.innerHeight
+      // 当元素顶部在视口底部时 progress=0，到达视口顶部时 progress=1
+      const progress = Math.min(1, Math.max(0, 1 - rect.top / viewH))
+      const scale = 0.78 + progress * 0.22
+      const rotateX = (1 - progress) * 10
+      el.style.transform = `perspective(1200px) scale(${scale}) rotateX(${rotateX}deg)`
+      rafId = requestAnimationFrame(update)
+    }
+    rafId = requestAnimationFrame(update)
+    return () => cancelAnimationFrame(rafId)
+  }, [])
+
   return (
     <>
       <section className="hero" id="version-intro">
-        <h1 className="hero-title">{t.hero.title}</h1>
         <HeroHeadlineBlock
           enText={t.hero.headline.en}
           zhText={t.hero.headline.zh}
@@ -60,10 +80,9 @@ export function HeroSection({ onOpenDownload }) {
             <span className="download-button-secondary-label">{t.hero.communityButton}</span>
           </a>
         </div>
-        <p className="hero-caption">{t.hero.caption}</p>
         <div className="hero-showcase-outer">
-          <ShowcaseSparkles />
-          <div className="hero-showcase">
+          <div className="hero-showcase" ref={showcaseRef}>
+            <ShowcaseSparkles />
             <div className="hero-video-container">
               {!heroImgLoaded && <div className="hero-video-skeleton" />}
               <img

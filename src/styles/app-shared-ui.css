@@ -63,7 +63,7 @@
 
 .animated-tooltip-name {
   color: #ffffff;
-  font-family: MiSans, system-ui, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.4;
@@ -72,7 +72,7 @@
 
 .animated-tooltip-designation {
   color: rgba(255, 255, 255, 0.45);
-  font-family: MiSans, system-ui, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.4;
@@ -105,7 +105,7 @@
 
 .game-count-text {
   color: #BAD7F5;
-  font-family: MiSans, system-ui, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 13px;
   font-weight: 600;
 }
@@ -114,7 +114,7 @@
   margin-top: 20px;
   color: #F4F0FF;
   text-align: center;
-  font-family: MiSans, system-ui, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 380;
@@ -251,7 +251,7 @@
 
 .user-name {
   color: #DFEFFF;
-  font-family: MiSans, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 450;
@@ -291,7 +291,7 @@
   position: relative;
   z-index: 1;
   color: #FFF;
-  font-family: MiSans, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 1;
@@ -321,7 +321,7 @@
 
 .user-stat-value {
   color: #DFEFFF;
-  font-family: MiSans, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 520;
@@ -330,7 +330,7 @@
 
 .user-stat-label {
   color: rgba(186, 215, 245, 0.65);
-  font-family: MiSans, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 330;
@@ -402,7 +402,7 @@
   bottom: 110px;
   color: #F7F8F8;
   text-align: center;
-  font-family: Inter, MiSans, system-ui, sans-serif;
+  font-family: Inter, "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 28px;
   font-style: normal;
   font-weight: 500;
@@ -431,7 +431,7 @@
 .hero-showcase-outer {
   position: relative;
   width: 1200px;
-  margin-top: 145px;
+  margin-top: 36px;
 }
 
 .hero-showcase {
@@ -440,7 +440,7 @@
 
 .showcase-sparkles {
   position: absolute;
-  bottom: calc(100% - 2px);
+  bottom: calc(100% - 20px);
   left: 50%;
   width: 1280px;
   max-width: 100%;
@@ -538,7 +538,7 @@
 }
 
 .hero-actions {
-  margin-top: 50px;
+  margin-top: 40px;
   display: inline-flex;
   align-items: flex-start;
   gap: 16px;
@@ -618,7 +618,7 @@
 
 .download-button-label {
   color: #000;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 380;
@@ -628,22 +628,31 @@
 
 .download-button-secondary {
   position: relative;
-  display: flex;
-  min-width: 116px;
+  display: inline-flex;
+  min-width: 140px;
   width: fit-content;
-  height: 36px;
-  padding: 8px 16px;
+  height: 42px;
+  padding: 0 24px;
   justify-content: center;
   align-items: center;
   gap: 8px;
   white-space: nowrap;
   box-sizing: border-box;
-  border-radius: 6px;
+  border-radius: 100px;
   border: 0;
-  background: linear-gradient(0deg, rgba(250, 250, 250, 0.05) 0%, rgba(250, 250, 250, 0.1) 100%);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
   cursor: pointer;
   overflow: hidden;
   text-decoration: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.download-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
 }
 
 .download-button-secondary::before {
@@ -654,10 +663,9 @@
   border-radius: inherit;
   background: linear-gradient(
     180deg,
-    rgba(250, 250, 250, 0.2) 0%,
-    rgba(250, 250, 250, 0.05) 33.33%,
-    rgba(250, 250, 250, 0.05) 66.67%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.02) 100%
   );
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -673,13 +681,17 @@
 .download-button-secondary-label {
   position: relative;
   z-index: 1;
-  color: #fff;
   text-align: center;
-  font-family: MiSans, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 14px;
   font-style: normal;
-  font-weight: 380;
-  line-height: 20px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.03em;
   white-space: nowrap;
+  background: linear-gradient(90deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.7) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 

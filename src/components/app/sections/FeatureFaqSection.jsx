@@ -116,19 +116,6 @@ export function FeatureFaqSection({ openFaqIndex, onToggleFaq, onOpenDownload })
               )
             })}
           </div>
-          <div className="faq-bottom-logo">
-            <img src="/logo2.png" alt={t.faq.logoAlt} className="faq-bottom-logo-image" />
-            <p className="faq-bottom-logo-text">{t.faq.logoText}</p>
-          </div>
-          <div className="faq-bottom-headline">
-            <HeroHeadlineBlock
-              enText={t.faq.headline.en}
-              zhText={t.faq.headline.zh}
-              subtitle={t.faq.headline.subtitle}
-              showDownloadButton
-              onDownload={onOpenDownload}
-            />
-          </div>
           <div className="faq-bottom-panel">
             <LaserFlow
               className="faq-bottom-panel-laser"

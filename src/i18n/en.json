@@ -6,8 +6,8 @@
   "hero": {
     "title": "GameHub",
     "headline": {
-      "en": "Mac",
-      "zh": "Can Be a Game Console",
+      "en": "Game on,",
+      "zh": "Mac.",
       "subtitle": "Beta client now available for early access"
     },
     "downloadButton": "Download Now",
@@ -44,7 +44,7 @@
     "desc": "Configure game-specific emulator compatibility profiles for the ultimate gaming experience",
     "leftCard": {
       "title": "General Settings",
-      "desc": "Fine-tune based on game characteristics and device environment for higher freedom and more controllable gaming experience. Deep customization based on game traits and personal preferences for a uniquely tailored gameplay",
+      "desc": "Tweak settings per game to get the performance and experience you want.",
       "metalHud": {
         "title": "MetalHUD",
         "desc": "Display Metal performance monitoring panel in-game when enabled"
@@ -73,7 +73,7 @@
     },
     "rightCard": {
       "title": "Compatibility Profile",
-      "desc": "Flexible compatibility profiles for different games — from default playable to customized for your preferences. Balance stability and performance with flexible configuration combinations",
+      "desc": "Pick a profile that works out of the box, or build your own for the perfect balance of stability and speed.",
       "plan": {
         "title": "Compatibility Profile",
         "desc": "Official profile or customize your own"
@@ -121,8 +121,8 @@
     "logoAlt": "GameHub",
     "logoText": "GameHub",
     "headline": {
-      "en": "Mac",
-      "zh": "Can Be a Game Console",
+      "en": "Game on,",
+      "zh": "Mac.",
       "subtitle": "Beta client now available for early access"
     },
     "footer": {
