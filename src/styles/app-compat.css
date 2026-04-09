@@ -84,7 +84,7 @@
 .compat-inner-box-2 {
   position: absolute;
   top: 289px;
-  left: 51px;
+  left: 57.5px;
   width: 487px;
   height: 459px;
   border-radius: 30px;
@@ -109,6 +109,21 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.compat-inner-box-right {
+  width: 100%;
+  margin-top: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+.compat-inner-box-right-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .compat-setting-item-img {
@@ -137,6 +152,49 @@
   border-radius: 0;
 }
 
+.compat-inner-box-right-content .compat-setting-item {
+  height: 72px;
+  min-height: 72px;
+  max-height: 72px;
+  padding: 20px;
+  gap: 16px;
+  border: none;
+  background: transparent;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.compat-inner-box-right-content .compat-setting-item + .compat-setting-item {
+  border-top: none;
+}
+
+/* Align left card panel tones with the right card */
+.compat-card:first-child .compat-inner-box,
+.compat-card:first-child .compat-inner-box-2 {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.compat-card:first-child .compat-inner-box-content,
+.compat-card:first-child .compat-inner-box-2-content {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.compat-card:first-child .compat-setting-item {
+  border: none;
+  background: transparent;
+}
+
+.compat-card:first-child .compat-setting-item + .compat-setting-item {
+  border-top: none;
+}
+
+.compat-inner-box-right-content .compat-setting-item-dinput {
+  height: 72px !important;
+  min-height: 72px !important;
+  max-height: 72px !important;
+}
+
 .compat-setting-item {
   display: flex;
   padding: 20px;
@@ -149,6 +207,14 @@
   background: rgba(186, 215, 245, 0.05);
   border-radius: 0;
   overflow: hidden;
+}
+
+/* Keep the right-card rows visually consistent */
+.compat-inner-box-right-content .compat-setting-item-dinput {
+  height: 72px !important;
+  min-height: 72px !important;
+  max-height: 72px !important;
+  transform: none;
 }
 
 .compat-setting-item:first-child {
@@ -183,7 +249,7 @@
   background: rgba(186, 215, 245, 0.05);
   backdrop-filter: blur(15px);
   margin-top: 12px;
-  margin-left: 36px;
+  margin-left: 0;
 }
 
 .compat-setting-input-text {
@@ -205,9 +271,25 @@
   flex-shrink: 0;
 }
 
+.compat-setting-icon-boxed {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(186, 215, 245, 1);
+}
+
+.compat-setting-icon-boxed svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
 .compat-setting-text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 6px;
   overflow: hidden;
   min-width: 0;

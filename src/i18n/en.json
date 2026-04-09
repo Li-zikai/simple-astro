@@ -68,7 +68,7 @@
       },
       "language": {
         "title": "Language",
-        "desc": "Set Windows system language"
+        "desc": "Set the system language for the Wine container"
       }
     },
     "rightCard": {
@@ -80,7 +80,7 @@
       },
       "layer": {
         "title": "Compatibility Layer",
-        "desc": "Official profile or customize your own"
+        "desc": "Choose a Wine version — different versions offer different levels of compatibility"
       },
       "syncMode": {
         "title": "Sync Mode",
@@ -89,6 +89,10 @@
       "dinput": {
         "title": "Dinput Library",
         "desc": "Decide whether dinput.dll and dinput8.dll prefer game-bundled or Wine built-in versions"
+      },
+      "skipVideo": {
+        "title": "Skip Audio/Video Decode",
+        "desc": "Replace CG playback with a black screen to help mitigate compatibility issues"
       }
     }
   },

@@ -995,6 +995,7 @@
 .compat-inner-box-right {
   position: absolute;
   top: 189px;
+  margin-top: 0;
   left: 57.5px;
   width: 736px;
   height: 459px;

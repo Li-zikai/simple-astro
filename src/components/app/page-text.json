@@ -64,7 +64,7 @@
       },
       "language": {
         "title": "语言",
-        "desc": "设置Windows系统语言"
+        "desc": "设置wine容器的系统语言"
       }
     },
     "rightCard": {
@@ -76,7 +76,7 @@
       },
       "layer": {
         "title": "兼容层",
-        "desc": "官方方案或者您可以自定义选择"
+        "desc": "选择Wine版本，不同版本的兼容性支持程度不同"
       },
       "syncMode": {
         "title": "同步模式",
@@ -85,6 +85,10 @@
       "dinput": {
         "title": "Dinput函数库",
         "desc": "决定dinput.dll和dinput8.dll优先使用游戏自带或wine内置版本"
+      },
+      "skipVideo": {
+        "title": "跳过音视频解码",
+        "desc": "将以黑屏替代CG动画的播放，缓解兼容性问题"
       }
     }
   },
