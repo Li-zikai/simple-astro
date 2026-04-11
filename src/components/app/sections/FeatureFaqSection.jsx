@@ -25,7 +25,7 @@ function renderFaqAnswer(item) {
         before,
         <a
           key="link"
-          href={filingLinks.faqCompatList}
+          href={item.linkHref ?? filingLinks.faqCompatList}
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "#3B82F6", textDecoration: "underline" }}

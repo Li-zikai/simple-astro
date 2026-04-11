@@ -152,32 +152,31 @@
   },
   "faqItems": [
     {
-      "question": "Why release a beta version?",
-      "answer": "We consider user feedback essential to improving product quality.\nBy opening early access on macOS, we aim to collect real-world usage insights and continuously refine features and user experience."
+      "question": "Why launch a closed beta?",
+      "answer": "We believe player feedback is key to improving the product experience. This Mac closed beta lets early users try the latest build, helping us gather real feedback and refine features."
     },
     {
-      "question": "When will the official version be released?",
-      "answer": "The product is under active development and optimization.\nThe release timeline will be determined based on beta feedback and development progress. The beta period may be extended if necessary."
+      "question": "When will the official version release?",
+      "answer": "We are working hard to polish the product while ensuring high-quality performance. The release date, or whether to extend the beta, will be determined based on test feedback and development progress."
     },
     {
-      "question": "How do I link a Steam account?",
-      "answer": "After launching the client:\nClick the profile icon in the top-right corner to open the account panel.\nFor first-time linking, select Sign in to Steam and authenticate via credentials or QR code.\nTo add additional accounts, go to Account Center → Steam Account Management → Add Account and authenticate using credentials or QR code.",
-      "boldTexts": ["Sign in to Steam", "Account Center → Steam Account Management → Add Account"]
+      "question": "How to connect your Steam account?",
+      "answer": "Go to the Library in the Mac client, then click Connect Steam Now on the right to link your account.\n- First connection: Click Connect Steam Now and log in with your credentials or scan the QR code to authorize.\n- Adding multiple accounts: Go to your profile, find Steam Account Management, click Add Account, then log in via credentials or QR code."
     },
     {
-      "question": "How do I import game files?",
-      "answer": "Three import methods are supported:\n1. Manual import: Click Import Game from the sidebar or library, then select an .exe file or scan a folder.\n2. Drag and drop: Drag an .exe file directly into the client.\n3. Direct execution: Double-click an .exe file on your device.\nAfter import, the system automatically parses game metadata. You can edit the game cover, title, and description.\nIf the game does not appear, click the Refresh button in the top navigation bar.",
-      "boldTexts": ["Manual import", "Drag and drop", "Direct execution"]
+      "question": "How to import games?",
+      "answer": "There are 3 ways to add games to your Library:\n1. In the Library, click Import, then select an .exe file or scan a folder for executable files.\n2. Drag and drop an .exe file directly into the client.\n3. Double-click an .exe file on your device.\n\nAfter importing, the system will automatically parse game information. You can edit the game cover, title, and description. Once added, games will appear in your Library. If not visible, click the refresh button in the sidebar."
     },
     {
-      "question": "How do I configure emulator compatibility settings?",
-      "answer": "Pre-configured compatibility profiles are available for selected games. Launching the game applies the default configuration.\nAdvanced users can customize emulator containers and dependencies via Win Emulator Settings.",
-      "linkText": "the list of games with dedicated profiles (continuously updated)",
-      "boldTexts": ["Win Emulator Settings"]
+      "question": "How to configure emulator compatibility?",
+      "answer": "We have pre-configured compatibility profiles for over 200 popular games. Just click Play to use the default settings.\nAdvanced users can customize: After importing a game, go to its details page and open Windows Emulator Settings to manage containers and components.",
+      "boldTexts": ["Windows Emulator Settings", "Play"]
     },
     {
-      "question": "How to contact the GameHub team?",
-      "answer": "To facilitate in-depth communication with players, we've set up a QQ group (Group ID: 1079246543) for this beta, providing beta download guides, Q&A support, and feedback collection. We've also set up an official WeChat account where we'll share more GameHub news and updates. Welcome to join or follow us!"
+      "question": "How to contact official support?",
+      "answer": "Join our official Discord server for the closed beta:\nhttps://discord.gg/CrseHKRQTQ\nWe provide download guides, troubleshooting support, and feedback collection in the server.",
+      "linkText": "https://discord.gg/CrseHKRQTQ",
+      "linkHref": "https://discord.gg/CrseHKRQTQ"
     }
   ],
   "userData": {
