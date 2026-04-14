@@ -38,15 +38,16 @@ const heroImage = lang === 'en' || lang === 'en-US'
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'GameHub',
+  name: lang === 'en' ? 'GameHub' : '盖世游戏 GameHub',
   applicationCategory: 'GameApplication',
   operatingSystem: 'macOS',
   description,
-  url: siteUrl,
+  url: canonicalUrl,
+  inLanguage: lang === 'en' ? 'en-US' : 'zh-CN',
   offers: {
     '@type': 'Offer',
     price: '0',
-    priceCurrency: 'USD',
+    priceCurrency: lang === 'en' ? 'USD' : 'CNY',
   },
 };
 
@@ -59,6 +60,7 @@ const filingVariantInitScript = `(function(){var host=(window.location.hostname|
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="RQNkdkjXyhX1qruzwREJHOrVoUh863_UshatzdbYoy8" />
+    <meta http-equiv="content-language" content={lang === 'en' ? 'en' : 'zh-CN'} />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
     <link rel="shortcut icon" href="/favicon.ico?v=2" />
@@ -76,9 +78,9 @@ const filingVariantInitScript = `(function(){var host=(window.location.hostname|
     <meta name="author" content="GameHub" />
     <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Hreflang for multi-language -->
-    <link rel="alternate" hreflang={lang} href={canonicalUrl} />
-    <link rel="alternate" hreflang={alternateLang} href={`${siteUrl}${alternatePath}`} />
+    <!-- Hreflang for multi-language / search engine isolation -->
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/en`} />
+    <link rel="alternate" hreflang="zh-Hans-CN" href={`${siteUrl}/zh-cn`} />
     <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en`} />
 
     <!-- Open Graph / Facebook / Discord / LinkedIn -->

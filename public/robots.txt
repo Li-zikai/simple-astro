@@ -1,4 +1,15 @@
+# All crawlers - allow everything
 User-agent: *
 Allow: /
-
 Sitemap: https://www.gamemac.com/sitemap-index.xml
+
+# Baidu spider - prioritize Chinese content
+User-agent: Baiduspider
+Allow: /zh-cn/
+Allow: /
+Crawl-delay: 1
+
+# Google - prioritize English content
+User-agent: Googlebot
+Allow: /en/
+Allow: /
