@@ -90,6 +90,11 @@ export function HeroSection({ onOpenDownload }) {
                 className="hero-video"
                 src={heroImageSrc}
                 alt={t.hero.videoPlayLabel}
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+                width={1280}
+                height={832}
                 onLoad={() => setHeroImgLoaded(true)}
                 onError={() => setHeroImgLoaded(true)}
                 style={{ visibility: heroImgLoaded ? "visible" : "hidden" }}
