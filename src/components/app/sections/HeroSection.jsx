@@ -63,14 +63,14 @@ export function HeroSection({ onOpenDownload }) {
           subtitle={t.hero.headline.subtitle}
         />
         <div className="hero-actions">
-          {/* <button
+          <button
             type="button"
             className="download-button-primary"
             onClick={onOpenDownload}
           >
             <AppleIcon />
             <span className="download-button-label">{t.hero.downloadButton}</span>
-          </button> */}
+          </button>
           <a
             href={t.communityUrl}
             target="_blank"

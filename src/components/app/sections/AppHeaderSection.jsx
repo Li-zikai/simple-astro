@@ -36,13 +36,13 @@ export function AppHeaderSection({ onOpenDownload }) {
           <a className="header-lang-switch" href={t.bottomBar.langSwitchHref}>
             {t.bottomBar.langSwitch}
           </a>
-          {/* <RainbowButton
+          <RainbowButton
             className="header-rainbow-button"
             variant="outline"
             onClick={onOpenDownload}
           >
             {t.header.downloadButton}
-          </RainbowButton> */}
+          </RainbowButton>
         </div>
       </div>
     </header>
