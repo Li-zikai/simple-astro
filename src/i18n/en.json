@@ -8,10 +8,10 @@
     "headline": {
       "en": "Game on,",
       "zh": "Mac.",
-      "subtitle": "Beta client now available for early access"
+      "subtitle": "Public beta client now available"
     },
     "downloadButton": "Download Now",
-    "communityButton": "Join Beta Community",
+    "communityButton": "Join Official Community",
     "caption": "This beta only supports Mac with M-series chips",
     "videoPlayLabel": "Play video",
     "videoModalLabel": "Video player dialog",
@@ -127,7 +127,7 @@
     "headline": {
       "en": "Game on,",
       "zh": "Mac.",
-      "subtitle": "Beta client now available for early access"
+      "subtitle": "Public beta client now available"
     },
     "footer": {
       "copyright": "Copyright 2025 All Rights Reserved.",
@@ -151,10 +151,6 @@
     }
   },
   "faqItems": [
-    {
-      "question": "Why launch a closed beta?",
-      "answer": "We believe player feedback is key to improving the product experience. This Mac closed beta lets early users try the latest build, helping us gather real feedback and refine features."
-    },
     {
       "question": "When will the official version release?",
       "answer": "We are working hard to polish the product while ensuring high-quality performance. The release date, or whether to extend the beta, will be determined based on test feedback and development progress."
@@ -207,7 +203,7 @@
     "updateDateLabel": "Updated",
     "updateDateValue": "March 2026",
     "systemReqLabel": "System Requirements",
-    "communityTitle": "Join Beta Community",
+    "communityTitle": "Join Official Community",
     "communityDesc": "Join thousands of beta users — be the first to experience new features and help shape the product",
     "communityBtn": "Join Community",
     "featureGames": "Massive Game Library",
