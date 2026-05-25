@@ -1,4 +1,15 @@
 /**
+ * 获取直链下载 URL（服务端会 302 跳转到最新 DMG）
+ * @param {"zh"|"en"} locale
+ * @returns {string}
+ */
+export function getDirectDownloadUrl(locale) {
+  return locale === "zh"
+    ? "https://api-cn-gamehub.xiaoji.com/game/download/mac/zh-cn"
+    : "https://api-international-gamehub.xiaoji.com/game/download/mac/en"
+}
+
+/**
  * 获取最新版本信息
  * @param {"zh"|"en"} locale
  * @param {string} type 包类型，如 "mac"
