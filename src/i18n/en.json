@@ -161,7 +161,7 @@
     },
     {
       "question": "How to import games?",
-      "answer": "There are 2 ways to add games to your Library:\n1. Drag and drop an .exe file directly into the client.\n2. Double-click an .exe file on your device.\n\nAfter importing, the system will automatically parse game information. You can edit the game cover, title, and description. Once added, games will appear in your Library. If not visible, click the refresh button in the sidebar."
+      "answer": "There are 3 ways to add games to your Library:\n1. In the Library, click Import Game, then select Add Game Program and choose an .exe file.\n2. Drag and drop an .exe file directly into the client.\n3. Double-click an .exe file on your device.\n\nAfter importing, the system will automatically parse game information. You can edit the game cover, title, and description. Once added, games will appear in your Library. If not visible, click the refresh button in the sidebar."
     },
     {
       "question": "How to configure emulator compatibility?",
@@ -185,7 +185,7 @@
   },
   "gameCovers": [
     { "name": "Cyberpunk 2077", "designation": "Action RPG" },
-    { "name": "It Takes Two", "designation": "Co-op Adventure" },
+    { "name": "Baldur's Gate 3", "designation": "RPG" },
     { "name": "Black Myth: Wukong", "designation": "Action RPG" },
     { "name": "God of War", "designation": "Action Adventure" },
     { "name": "Nioh 2", "designation": "Action RPG" },
