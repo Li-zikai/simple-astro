@@ -8,10 +8,10 @@
     "headline": {
       "en": "Game on,",
       "zh": "Mac.",
-      "subtitle": "Public beta client now available"
+      "subtitle": "Beta client now available for early access"
     },
     "downloadButton": "Download Now",
-    "communityButton": "Join Official Community",
+    "communityButton": "Join Beta Community",
     "caption": "This beta only supports Mac with M-series chips",
     "videoPlayLabel": "Play video",
     "videoModalLabel": "Video player dialog",
@@ -127,7 +127,7 @@
     "headline": {
       "en": "Game on,",
       "zh": "Mac.",
-      "subtitle": "Public beta client now available"
+      "subtitle": "Beta client now available for early access"
     },
     "footer": {
       "copyright": "Copyright 2025 All Rights Reserved.",
@@ -203,7 +203,7 @@
     "updateDateLabel": "Updated",
     "updateDateValue": "March 2026",
     "systemReqLabel": "System Requirements",
-    "communityTitle": "Join Official Community",
+    "communityTitle": "Join Beta Community",
     "communityDesc": "Join thousands of beta users — be the first to experience new features and help shape the product",
     "communityBtn": "Join Community",
     "featureGames": "Massive Game Library",

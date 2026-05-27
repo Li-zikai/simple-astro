@@ -1,10 +1,9 @@
-import { RainbowButton } from "@/registry/magicui/rainbow-button"
-import { BrandIcon, BrandTextIcon } from "@/components/app/icons"
+import { BrandTextIcon } from "@/components/app/icons"
 import { useI18n } from "@/i18n/context"
 
 const navTargetIds = ["version-intro", "survey-feedback"]
 
-export function AppHeaderSection({ onOpenDownload }) {
+export function AppHeaderSection() {
   const { t, locale } = useI18n()
 
   const handleNavClick = (targetId) => {
@@ -36,13 +35,6 @@ export function AppHeaderSection({ onOpenDownload }) {
           <a className="header-lang-switch" href={t.bottomBar.langSwitchHref}>
             {t.bottomBar.langSwitch}
           </a>
-          <RainbowButton
-            className="header-rainbow-button"
-            variant="outline"
-            onClick={onOpenDownload}
-          >
-            {t.header.downloadButton}
-          </RainbowButton>
         </div>
       </div>
     </header>

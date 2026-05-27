@@ -74,7 +74,7 @@ function renderFilingLabel(filing) {
   ))
 }
 
-export function FeatureFaqSection({ openFaqIndex, onToggleFaq, onOpenDownload }) {
+export function FeatureFaqSection({ openFaqIndex, onToggleFaq }) {
   const { t, locale } = useI18n()
   const faqFooter = t.faq.footer
   const showDomesticFooter = t.showDomesticFooter

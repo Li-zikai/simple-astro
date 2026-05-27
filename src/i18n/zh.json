@@ -8,10 +8,10 @@
     "headline": {
       "en": "玩游戏，用你的",
       "zh": "",
-      "subtitle": "客户端公测版本现已全面开放"
+      "subtitle": "客户端内测版本抢先体验开启"
     },
     "downloadButton": "立即下载",
-    "communityButton": "加入官方社群",
+    "communityButton": "加入内测社群",
     "caption": "本次内测仅支持 Mac M 系列芯片",
     "videoPlayLabel": "播放视频",
     "videoModalLabel": "视频播放弹窗",
@@ -127,7 +127,7 @@
     "headline": {
       "en": "Mac",
       "zh": "也可以是游戏机",
-      "subtitle": "客户端公测版本现已全面开放"
+      "subtitle": "客户端内测版本抢先体验开启"
     },
     "footer": {
       "copyright": "Copyright 2025 All Rights Reserved.",
@@ -200,7 +200,7 @@
     "updateDateLabel": "更新日期",
     "updateDateValue": "2026 年 3 月",
     "systemReqLabel": "系统要求",
-    "communityTitle": "加入官方社群",
+    "communityTitle": "加入内测社群",
     "communityDesc": "与数千位内测用户一起，第一时间体验新功能，参与反馈共建",
     "communityBtn": "加入社群",
     "featureGames": "海量游戏库",

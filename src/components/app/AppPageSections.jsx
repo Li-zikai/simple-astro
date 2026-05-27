@@ -6,18 +6,16 @@ import { HeroSection } from "@/components/app/sections/HeroSection"
 export function AppPageSections({
   appRef,
   openFaqIndex,
-  onOpenDownload,
   onToggleFaq,
 }) {
   return (
     <main className="app" ref={appRef}>
-      <AppHeaderSection onOpenDownload={onOpenDownload} />
-      <HeroSection onOpenDownload={onOpenDownload} />
+      <AppHeaderSection />
+      <HeroSection />
       <CompatSection />
       <FeatureFaqSection
         openFaqIndex={openFaqIndex}
         onToggleFaq={onToggleFaq}
-        onOpenDownload={onOpenDownload}
       />
     </main>
   )
