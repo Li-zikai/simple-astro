@@ -61,6 +61,7 @@
   border-radius: 30px;
   border: 1px solid rgba(186, 215, 245, 0.10);
   background: rgba(186, 215, 245, 0.05);
+  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   box-sizing: border-box;
   padding: 20px;
@@ -90,6 +91,7 @@
   border-radius: 30px;
   border: 1px solid rgba(186, 215, 245, 0.10);
   background: rgba(186, 215, 245, 0.05);
+  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   box-sizing: border-box;
   z-index: 1;
@@ -247,6 +249,7 @@
   border-radius: 8px;
   border: 1px solid rgba(186, 215, 245, 0.20);
   background: rgba(186, 215, 245, 0.05);
+  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   margin-top: 12px;
   margin-left: 0;
@@ -295,4 +298,3 @@
   min-width: 0;
   flex: 1;
 }
-
