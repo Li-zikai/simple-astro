@@ -400,6 +400,8 @@
 
 .steam-management-title {
   margin: 0;
+  max-width: calc(100% - 96px);
+  box-sizing: border-box;
   text-align: center;
   text-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
   font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -411,10 +413,13 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  overflow-wrap: normal;
 }
 
 .steam-management-subtitle {
   margin-top: 20px;
+  max-width: calc(100% - 96px);
+  box-sizing: border-box;
   color: #86868B;
   text-align: center;
   font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -422,6 +427,18 @@
   font-style: normal;
   font-weight: 330;
   line-height: normal;
+}
+
+html[lang="en"] .steam-management-title {
+  max-width: 1040px;
+  font-size: 56px;
+  line-height: 1.25;
+  padding: 0.08em 0;
+}
+
+html[lang="en"] .steam-management-subtitle {
+  max-width: 940px;
+  line-height: 1.35;
 }
 
 .user-popup-container {
@@ -598,4 +615,3 @@
   margin-top: -74px;
   margin-right: -20px;
 }
-
