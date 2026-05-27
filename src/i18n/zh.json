@@ -181,11 +181,11 @@
     "playTime": "游戏时长"
   },
   "gameCovers": [
+    { "name": "赛博朋克2077", "designation": "动作RPG" },
+    { "name": "双人成行", "designation": "合作冒险" },
     { "name": "黑神话：悟空", "designation": "动作RPG" },
-    { "name": "艾尔登法环", "designation": "开放世界RPG" },
-    { "name": "博德之门3", "designation": "角色扮演" },
-    { "name": "赛博朋克2077", "designation": "动作冒险" },
-    { "name": "只狼", "designation": "动作冒险" },
+    { "name": "战神", "designation": "动作冒险" },
+    { "name": "仁王2", "designation": "动作RPG" },
     { "name": "200+", "designation": "" }
   ],
   "downloadModal": {
