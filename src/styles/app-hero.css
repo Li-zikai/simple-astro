@@ -8,6 +8,11 @@
   overflow: visible;
 }
 
+.hero-showcase,
+.steam-data-section {
+  max-width: calc(100vw - 96px);
+}
+
 .hero-title {
   position: relative;
   z-index: 20;
@@ -387,6 +392,7 @@
   gap: 24px;
   justify-content: center;
   width: 100%;
+  overflow: hidden;
 }
 
 .showcase-masonry-wrap {

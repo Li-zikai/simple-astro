@@ -127,12 +127,12 @@ export function HeroSection() {
           </p>
         </div>
         <div className="user-popup-container">
-          <Marquee style={{ "--duration": "60s", "--gap": "24px" }}>
+          <Marquee className="user-popup-marquee" style={{ "--duration": "60s", "--gap": "24px" }}>
             {firstRowUsers.map((user, j) => (
               <UserPopupCard key={`r1-${j}`} user={user} />
             ))}
           </Marquee>
-          <Marquee reverse style={{ "--duration": "60s", "--gap": "24px" }}>
+          <Marquee className="user-popup-marquee" reverse style={{ "--duration": "60s", "--gap": "24px" }}>
             {secondRowUsers.map((user, j) => (
               <UserPopupCard key={`r2-${j}`} user={user} />
             ))}
