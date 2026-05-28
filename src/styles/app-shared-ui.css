@@ -465,7 +465,6 @@
 .hero-showcase-outer {
   position: relative;
   width: 1200px;
-  max-width: calc(100vw - 96px);
   margin-top: 36px;
 }
 
