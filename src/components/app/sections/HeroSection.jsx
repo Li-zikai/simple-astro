@@ -4,6 +4,7 @@ import { Marquee } from "@/registry/magicui/marquee"
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip"
 import { FlipNumber } from "@/components/app/FlipNumber"
 import { UserPopupCard } from "@/components/app/UserPopupCard"
+import { AppleIcon } from "@/components/app/icons"
 import {
   firstRowUsers,
   secondRowUsers,
@@ -14,6 +15,7 @@ import {
 import { HeroHeadlineBlock } from "@/components/app/HeroHeadlineBlock"
 import { useI18n } from "@/i18n/context"
 import { useGameCovers } from "@/components/app/constants"
+import { getDirectDownloadUrl } from "@/lib/downloadApi"
 
 export function HeroSection() {
   const { t, locale } = useI18n()
@@ -24,6 +26,10 @@ export function HeroSection() {
   const heroImageSrc = locale === "en"
     ? "/MacBook-air2.png"
     : "/MacBook-air3.png"
+  const downloadUrl = getDirectDownloadUrl(locale)
+  const handleDownload = () => {
+    window.location.href = downloadUrl
+  }
 
   useEffect(() => {
     setHeroImgLoaded(false)
@@ -62,6 +68,14 @@ export function HeroSection() {
           subtitle={t.hero.headline.subtitle}
         />
         <div className="hero-actions">
+          <button
+            type="button"
+            className="download-button-primary"
+            onClick={handleDownload}
+          >
+            <AppleIcon />
+            <span className="download-button-label">{t.hero.downloadButton}</span>
+          </button>
           <a
             href={t.communityUrl}
             target="_blank"

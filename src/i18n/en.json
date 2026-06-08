@@ -1,16 +1,16 @@
 {
   "header": {
     "nav": ["Version Info", "Feedback"],
-    "downloadButton": "Download"
+    "downloadButton": "Download（1.0.1）"
   },
   "hero": {
     "title": "GameHub",
     "headline": {
       "en": "Game on,",
       "zh": "Mac.",
-      "subtitle": "Beta client now available for early access"
+      "subtitle": "Public Beta is now available, ushering in a brand-new gaming experience."
     },
-    "downloadButton": "Download Now",
+    "downloadButton": "Download（1.0.1）",
     "communityButton": "Join Beta Community",
     "caption": "This beta only supports Mac with M-series chips",
     "videoPlayLabel": "Play video",
@@ -151,10 +151,6 @@
     }
   },
   "faqItems": [
-    {
-      "question": "When will the official version release?",
-      "answer": "We are working hard to polish the product while ensuring high-quality performance. The release date, or whether to extend the beta, will be determined based on test feedback and development progress."
-    },
     {
       "question": "How to connect your Steam account?",
       "answer": "Go to the Library in the Mac client, then click Connect Steam Now on the right to link your account.\n- First connection: Click Connect Steam Now and log in with your credentials or scan the QR code to authorize.\n- Adding multiple accounts: Go to your profile, find Steam Account Management, click Add Account, then log in via credentials or QR code."
