@@ -30,12 +30,10 @@ ingress:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
     alb.ingress.kubernetes.io/ssl-redirect: "true"
   tls:
-    - secretName: gamemac-com-tls
-      hosts:
+    - hosts:
         - www.gamemac.com
         - gamemac.com
-    - secretName: gamemac-cn-tls
-      hosts:
+    - hosts:
         - www.gamemac.cn
         - gamemac.cn
   tlsSecrets:
