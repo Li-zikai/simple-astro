@@ -32,8 +32,8 @@ const alternatePath = lang === 'en' ? '/zh-cn' : '/en';
 
 // Preload the hero LCP image
 const heroImage = lang === 'en' || lang === 'en-US'
-  ? '/MacBook-air2.png'
-  : '/MacBook-air3.png';
+  ? '/MacBook-air2.png?v=4'
+  : '/MacBook-air3.png?v=4';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -52,6 +52,7 @@ const jsonLd = {
 };
 
 const filingVariantInitScript = `(function(){var host=(window.location.hostname||"").toLowerCase();var variant=${JSON.stringify(defaultFilingVariant)};var cnHosts=${JSON.stringify(gamemacCnHosts)};if(cnHosts.indexOf(host)!==-1){variant=${JSON.stringify(gamemacCnFilingVariant)};}document.documentElement.setAttribute(${JSON.stringify(filingVariantAttribute)},variant);}());`;
+const faviconRefreshScript = `(function(){var stamp=Date.now();var icons=[['icon','image/png','/gamemac-tab-icon.png?v=6&t='+stamp],['apple-touch-icon','image/png','/gamemac-tab-icon.png?v=6&t='+stamp],['shortcut icon','image/x-icon','/gamemac-tab-icon.ico?v=6&t='+stamp]];document.querySelectorAll('link[rel~="icon"],link[rel="shortcut icon"]').forEach(function(node){node.parentNode&&node.parentNode.removeChild(node);});icons.forEach(function(item){var link=document.createElement('link');link.rel=item[0];link.type=item[1];link.href=item[2];document.head.appendChild(link);});}());`;
 ---
 
 <!doctype html>
@@ -61,9 +62,10 @@ const filingVariantInitScript = `(function(){var host=(window.location.hostname|
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="RQNkdkjXyhX1qruzwREJHOrVoUh863_UshatzdbYoy8" />
     <meta http-equiv="content-language" content={lang === 'en' ? 'en' : 'zh-CN'} />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
-    <link rel="shortcut icon" href="/favicon.ico?v=2" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/gamemac-tab-icon.png?v=6" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/gamemac-tab-icon.png?v=6" />
+    <link rel="shortcut icon" href="/gamemac-tab-icon.ico?v=6" />
+    <script is:inline set:html={faviconRefreshScript}></script>
     <meta name="generator" content={Astro.generator} />
 
     <!-- Preload LCP hero image -->

@@ -24,8 +24,8 @@ export function HeroSection() {
   const heroImgRef = useRef(null)
   const showcaseRef = useRef(null)
   const heroImageSrc = locale === "en"
-    ? "/MacBook-air2.png"
-    : "/MacBook-air3.png"
+    ? "/MacBook-air2.png?v=4"
+    : "/MacBook-air3.png?v=4"
   const downloadUrl = getDirectDownloadUrl(locale)
   const handleDownload = () => {
     window.location.href = downloadUrl
@@ -157,7 +157,7 @@ export function HeroSection() {
         <div className="steam-data-text">{t.steam.syncDataTitle}</div>
         <div className="steam-data-section">
           <img className="steam-data-bg" src="/Background.png" alt="" />
-          <img className="steam-data-center-img" src="/logo2.png" alt="" />
+          <img className="steam-data-center-img" src="/steam-data-center-icon.png?v=1" alt="" />
           <div className="steam-data-grid">
             <div className="steam-data-card">
               <div className="game-covers-stack">

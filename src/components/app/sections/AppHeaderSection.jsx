@@ -17,7 +17,7 @@ export function AppHeaderSection() {
     <header className="app-header">
       <div className="header-inner">
         <div className="header-brand">
-          <img src="/logoo.svg" alt={t.brandAlt} className="header-brand-icon" />
+          <img src="/gamehub-mark.svg?v=4" alt={t.brandAlt} className="header-brand-icon" />
           <BrandTextIcon locale={locale} />
         </div>
         <div className="header-action">
