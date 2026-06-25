@@ -1,7 +1,7 @@
 {
   "header": {
     "nav": ["Version Info", "Feedback"],
-    "downloadButton": "Download（1.0.1）"
+    "downloadButton": "Download"
   },
   "hero": {
     "title": "GameHub",
@@ -10,7 +10,7 @@
       "zh": "Mac.",
       "subtitle": "Public Beta is now available, ushering in a brand-new gaming experience."
     },
-    "downloadButton": "Download（1.0.1）",
+    "downloadButton": "Download",
     "communityButton": "Join Beta Community",
     "caption": "This beta only supports Mac with M-series chips",
     "videoPlayLabel": "Play video",
