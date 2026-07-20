@@ -9,7 +9,7 @@
 
 ---
 
-## 1. 构建镜像
+## 1. 构建镜像与 Helm Chart
 
 ```bash
 # 默认读取 deploy/version.txt，并自动递增补丁版本
@@ -19,14 +19,24 @@ bash deploy/build.sh
 bash deploy/build.sh 1.1.4
 ```
 
-镜像地址：`gamesirnanjing.asuscomm.com:5000/gamehub/gamemac:<版本号>`
+脚本会依次：
+
+1. 构建并推送 Docker 镜像（版本 tag + `latest`）
+2. `helm package` 打包 Chart（`version` / `appVersion` / `image.tag` 与镜像版本一致）
+3. `helm push` 将 Chart 上传到 OCI 仓库
+
+| 产物 | 地址 |
+|------|------|
+| 镜像 | `gamesirnanjing.asuscomm.com:5000/gamehub/gamemac:<版本号>` |
+| Chart | `oci://gamesirnanjing.asuscomm.com:5000/gamehub/gamemac:<版本号>` |
 
 版本文件：`deploy/version.txt`
 
 - 文件记录“上次成功构建并推送”的版本号
 - 不传参数执行 `bash deploy/build.sh` 时，会自动将补丁版本 `+1`
 - 传入显式版本时（例如 `bash deploy/build.sh 1.1.4`），成功后也会写回版本文件
-- 只有镜像构建和推送都成功后，版本文件才会更新
+- 只有 **镜像和 Chart 都推送成功** 后，版本文件才会更新
+- Chart 打包时会在临时目录写入 `image.tag`，**不会**改仓库里的 `helm/gamemac/values.yaml`
 
 ---
 
@@ -36,12 +46,18 @@ bash deploy/build.sh 1.1.4
 # 1. 进入项目根目录
 cd /path/to/gamemac
 
-# 2. 自动生成下一个版本并构建推送
+# 2. 自动生成下一个版本并构建推送（镜像 + Chart）
 bash deploy/build.sh
 
-# 3. 首次安装或升级到新版本
+# 3a. 使用本地 Chart 安装/升级
 helm upgrade --install gamemac ./helm/gamemac -n gamehub --create-namespace \
   --set image.tag="<上一步输出的版本号>"
+
+# 3b. 或使用已推送的 OCI Chart（image.tag 已内置为同版本）
+helm upgrade --install gamemac oci://gamesirnanjing.asuscomm.com:5000/gamehub/gamemac \
+  --version <上一步输出的版本号> \
+  -n gamehub --create-namespace \
+  --plain-http
 
 # 4. 检查部署结果
 kubectl get pods -n gamehub -l app.kubernetes.io/name=gamemac

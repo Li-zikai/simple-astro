@@ -39,7 +39,7 @@ ingress:
   tlsSecrets:
     - create: true
       name: gamemac-com-tls
-      certFile: cert/gamemac.com.pem
+      certFile: cert/gamemac.com_bundle.pem
       keyFile: cert/gamemac.com.key
     - create: true
       name: gamemac-cn-tls
