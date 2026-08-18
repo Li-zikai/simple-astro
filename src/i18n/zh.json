@@ -204,7 +204,11 @@
     "featureSilicon": "Apple Silicon 原生优化",
     "featureSiliconDesc": "M 系列芯片深度适配，低延迟高帧率",
     "featureGamepad": "游戏手柄支持",
-    "featureGamepadDesc": "兼容主流手柄设备，即插即用"
+    "featureGamepadDesc": "兼容主流手柄设备，即插即用",
+    "fetchError": "获取下载链接失败"
+  },
+  "languageMenu": {
+    "label": "选择语言"
   },
   "bottomBar": {
     "langSwitch": "EN",

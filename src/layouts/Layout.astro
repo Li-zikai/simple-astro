@@ -27,27 +27,48 @@ const siteUrl = 'https://www.gamemac.com';
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageUrl = new URL(ogImage, siteUrl).href;
 
-const alternateLang = lang === 'en' ? 'zh-CN' : 'en';
-const alternatePath = lang === 'en' ? '/zh-cn' : '/en';
+const localeMetadata = {
+  en: {
+    contentLanguage: 'en',
+    inLanguage: 'en-US',
+    ogLocale: 'en_US',
+    ogAlternates: ['zh_CN', 'ru_RU'],
+    priceCurrency: 'USD',
+  },
+  'zh-CN': {
+    contentLanguage: 'zh-CN',
+    inLanguage: 'zh-CN',
+    ogLocale: 'zh_CN',
+    ogAlternates: ['en_US', 'ru_RU'],
+    priceCurrency: 'CNY',
+  },
+  ru: {
+    contentLanguage: 'ru',
+    inLanguage: 'ru-RU',
+    ogLocale: 'ru_RU',
+    ogAlternates: ['en_US', 'zh_CN'],
+    priceCurrency: 'USD',
+  },
+};
+const currentLocale = localeMetadata[lang] ?? localeMetadata.en;
+const isChinese = lang === 'zh-CN';
 
 // Preload the hero LCP image
-const heroImage = lang === 'en' || lang === 'en-US'
-  ? '/MacBook-air2.png?v=4'
-  : '/MacBook-air3.png?v=4';
+const heroImage = isChinese ? '/MacBook-air3.png?v=4' : '/MacBook-air2.png?v=4';
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: lang === 'en' ? 'GameHub' : '盖世游戏 GameHub',
+  name: isChinese ? '盖世游戏 GameHub' : 'GameHub',
   applicationCategory: 'GameApplication',
   operatingSystem: 'macOS',
   description,
   url: canonicalUrl,
-  inLanguage: lang === 'en' ? 'en-US' : 'zh-CN',
+  inLanguage: currentLocale.inLanguage,
   offers: {
     '@type': 'Offer',
     price: '0',
-    priceCurrency: lang === 'en' ? 'USD' : 'CNY',
+    priceCurrency: currentLocale.priceCurrency,
   },
 };
 
@@ -61,7 +82,7 @@ const faviconRefreshScript = `(function(){var stamp=Date.now();var icons=[['icon
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="RQNkdkjXyhX1qruzwREJHOrVoUh863_UshatzdbYoy8" />
-    <meta http-equiv="content-language" content={lang === 'en' ? 'en' : 'zh-CN'} />
+    <meta http-equiv="content-language" content={currentLocale.contentLanguage} />
     <link rel="icon" type="image/png" sizes="512x512" href="/gamemac-tab-icon.png?v=6" />
     <link rel="apple-touch-icon" sizes="512x512" href="/gamemac-tab-icon.png?v=6" />
     <link rel="shortcut icon" href="/gamemac-tab-icon.ico?v=6" />
@@ -83,6 +104,7 @@ const faviconRefreshScript = `(function(){var stamp=Date.now();var icons=[['icon
     <!-- Hreflang for multi-language / search engine isolation -->
     <link rel="alternate" hreflang="en" href={`${siteUrl}/en`} />
     <link rel="alternate" hreflang="zh-Hans-CN" href={`${siteUrl}/zh-cn`} />
+    <link rel="alternate" hreflang="ru" href={`${siteUrl}/ru`} />
     <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en`} />
 
     <!-- Open Graph / Facebook / Discord / LinkedIn -->
@@ -94,8 +116,10 @@ const faviconRefreshScript = `(function(){var stamp=Date.now();var icons=[['icon
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="GameHub" />
-    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'zh_CN'} />
-    <meta property="og:locale:alternate" content={lang === 'en' ? 'zh_CN' : 'en_US'} />
+    <meta property="og:locale" content={currentLocale.ogLocale} />
+    {currentLocale.ogAlternates.map((alternate) => (
+      <meta property="og:locale:alternate" content={alternate} />
+    ))}
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />

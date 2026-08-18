@@ -82,7 +82,7 @@ export function DownloadModal({ onClose }) {
           ) : fetchError || !downloadUrl ? (
             <button className="modal-download-btn modal-download-btn--error" disabled>
               <AppleIcon />
-              <span>{locale === "zh" ? "获取下载链接失败" : "Failed to get download link"}</span>
+              <span>{dm.fetchError}</span>
             </button>
           ) : (
             <a

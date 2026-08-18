@@ -1,6 +1,6 @@
 /**
  * 获取直链下载 URL（服务端会 302 跳转到最新 DMG）
- * @param {"zh"|"en"} locale
+ * @param {"zh"|"en"|"ru"} locale
  * @returns {string}
  */
 export function getDirectDownloadUrl(locale) {
@@ -11,7 +11,7 @@ export function getDirectDownloadUrl(locale) {
 
 /**
  * 获取最新版本信息
- * @param {"zh"|"en"} locale
+ * @param {"zh"|"en"|"ru"} locale
  * @param {string} type 包类型，如 "mac"
  * @returns {Promise<{ downloadUrl: string, version: string, fileSize: number, updatedAt: number, arch: string }>}
  */

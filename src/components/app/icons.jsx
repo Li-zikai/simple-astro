@@ -37,8 +37,8 @@ export function BrandTextEnIcon() {
 }
 
 export function BrandTextIcon({ locale }) {
-  if (locale === "en") return <BrandTextEnIcon />
-  return <BrandTextZhIcon />
+  if (locale === "zh") return <BrandTextZhIcon />
+  return <BrandTextEnIcon />
 }
 
 export function AppleIcon() {

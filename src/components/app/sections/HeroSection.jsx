@@ -23,9 +23,9 @@ export function HeroSection() {
   const [heroImgLoaded, setHeroImgLoaded] = useState(false)
   const heroImgRef = useRef(null)
   const showcaseRef = useRef(null)
-  const heroImageSrc = locale === "en"
-    ? "/MacBook-air2.png?v=4"
-    : "/MacBook-air3.png?v=4"
+  const heroImageSrc = locale === "zh"
+    ? "/MacBook-air3.png?v=4"
+    : "/MacBook-air2.png?v=4"
   const downloadUrl = getDirectDownloadUrl(locale)
   const handleDownload = () => {
     window.location.href = downloadUrl
@@ -126,7 +126,7 @@ export function HeroSection() {
                 <div className="showcase-box-large-media">
                   <img
                     className="showcase-box-large-image"
-                    src={locale === "en" ? "/hero-showcase-right-en.png" : "/hero-showcase-right.png"}
+                    src={locale === "zh" ? "/hero-showcase-right.png" : "/hero-showcase-right-en.png"}
                     alt={t.hero.showcaseImageAlt}
                   />
                 </div>

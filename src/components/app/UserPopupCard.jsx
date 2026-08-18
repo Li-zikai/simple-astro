@@ -3,7 +3,7 @@ import { UserLevelBadgeSvg } from "@/components/app/AppPageSectionSvgs"
 import { useI18n } from "@/i18n/context"
 
 function localizeCurrency(value, locale) {
-  if (locale === "en" && value.startsWith("¥")) {
+  if (locale !== "zh" && value.startsWith("¥")) {
     return "$" + value.slice(1)
   }
   return value

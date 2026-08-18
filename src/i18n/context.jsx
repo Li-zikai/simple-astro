@@ -1,8 +1,9 @@
 import { createContext, useContext, useMemo } from "react"
 import zh from "./zh.json"
 import en from "./en.json"
+import ru from "./ru.json"
 
-const translations = { zh, en }
+const translations = { zh, en, ru }
 
 const I18nContext = createContext(null)
 

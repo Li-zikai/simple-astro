@@ -207,7 +207,11 @@
     "featureSilicon": "Apple Silicon Native",
     "featureSiliconDesc": "Deep M-series chip optimization, low latency & high frame rate",
     "featureGamepad": "Gamepad Support",
-    "featureGamepadDesc": "Compatible with mainstream gamepads, plug and play"
+    "featureGamepadDesc": "Compatible with mainstream gamepads, plug and play",
+    "fetchError": "Failed to get download link"
+  },
+  "languageMenu": {
+    "label": "Select language"
   },
   "bottomBar": {
     "langSwitch": "CN",

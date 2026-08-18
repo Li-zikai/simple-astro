@@ -34,12 +34,14 @@
     <link rel="canonical" href="https://www.gamemac.com/en" />
     <link rel="alternate" hreflang="en" href="https://www.gamemac.com/en" />
     <link rel="alternate" hreflang="zh-CN" href="https://www.gamemac.com/zh-cn" />
+    <link rel="alternate" hreflang="ru" href="https://www.gamemac.com/ru" />
     <link rel="alternate" hreflang="x-default" href="https://www.gamemac.com/en" />
     <script is:inline>
       (function () {
         var lang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
         var isZhCN = lang === "zh-cn" || lang === "zh-hans" || lang === "zh-hans-cn" || lang === "zh";
-        window.location.replace(isZhCN ? "/zh-cn" : "/en");
+        var isRussian = lang === "ru" || lang.indexOf("ru-") === 0;
+        window.location.replace(isZhCN ? "/zh-cn" : isRussian ? "/ru" : "/en");
       })();
     </script>
     <noscript>
