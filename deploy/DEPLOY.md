@@ -42,28 +42,51 @@ bash deploy/build.sh 1.1.4
 
 ## 2. 推荐部署步骤
 
+### 2.1 部署目标闸门（强制）
+
+在准备执行 Helm 的同一终端检查目标集群：
+
 ```bash
-# 1. 进入项目根目录
-cd /path/to/gamemac
-
-# 2. 自动生成下一个版本并构建推送（镜像 + Chart）
-bash deploy/build.sh
-
-# 3a. 使用本地 Chart 安装/升级
-helm upgrade --install gamemac ./helm/gamemac -n gamehub --create-namespace \
-  --set image.tag="<上一步输出的版本号>"
-
-# 3b. 或使用已推送的 OCI Chart（image.tag 已内置为同版本）
-helm upgrade --install gamemac oci://gamesirnanjing.asuscomm.com:5000/charts/gamemac \
-  --version <上一步输出的版本号> \
-  -n gamehub --create-namespace \
-  --plain-http
-
-# 4. 检查部署结果
+hostname
+kubectl config current-context
+kubectl config view --minify \
+  -o jsonpath='server={.clusters[0].cluster.server}{"\n"}'
+helm status gamemac -n gamehub
+kubectl get deploy gamemac -n gamehub \
+  -o jsonpath='image={.spec.template.spec.containers[0].image}{"\n"}'
 kubectl get pods -n gamehub -l app.kubernetes.io/name=gamemac
-kubectl get svc -n gamehub -l app.kubernetes.io/name=gamemac
-kubectl get ingress -n gamehub -l app.kubernetes.io/name=gamemac
 ```
+
+生产环境已有 `gamemac` release、Deployment 和 Pod。如果用户看到既有 Pod，而当前 context 查不到它们，说明连接了错误集群：停止部署，不要使用 `--install` 创建新 release。
+
+### 2.2 构建并升级已有 release
+
+```bash
+# 1. 进入项目根目录并构建、推送镜像与 Chart
+cd /path/to/gamemac
+bash deploy/build.sh
+VERSION="$(tr -d '[:space:]' < deploy/version.txt)"
+
+# 2. image.repository 固定在 Chart 中；保留线上值并显式更新 tag
+helm upgrade gamemac \
+  oci://gamesirnanjing.asuscomm.com:5000/charts/gamemac \
+  --version "${VERSION}" \
+  -n gamehub \
+  --plain-http \
+  --reuse-values \
+  --set image.tag="${VERSION}" \
+  --wait \
+  --timeout 5m
+
+# 3. 验证 Deployment 的 authoritative image 与 rollout
+kubectl rollout status deployment/gamemac -n gamehub --timeout=180s
+kubectl get deploy gamemac -n gamehub \
+  -o jsonpath='{.spec.template.spec.containers[0].image}{"\n"}'
+kubectl get pods -n gamehub -l app.kubernetes.io/name=gamemac \
+  --sort-by=.metadata.creationTimestamp
+```
+
+只有明确执行首次安装，并确认正确集群中不存在预期的既有 workload 时，才使用 `helm upgrade --install`。
 
 ---
 
@@ -225,17 +248,22 @@ cd /path/to/gamemac
 # 2. 自动递增版本并构建推送
 bash deploy/build.sh
 
-# 3. 首次部署或升级
-helm upgrade --install gamemac ./helm/gamemac -n gamehub --create-namespace \
-  --set image.tag="<上一步输出的版本号>"
+# 3. 升级已有生产 release
+helm upgrade gamemac oci://gamesirnanjing.asuscomm.com:5000/charts/gamemac \
+  --version "<上一步输出的版本号>" -n gamehub --plain-http \
+  --reuse-values --set image.tag="<上一步输出的版本号>" \
+  --wait --timeout 5m
 
 # 4. 验证部署
 kubectl get pods -n gamehub -l app.kubernetes.io/name=gamemac
 kubectl get ingress -n gamehub
 
-# 5. 后续版本更新示例
+# 5. 后续版本更新同样显式覆盖 image.tag
 bash deploy/build.sh
-helm upgrade gamemac ./helm/gamemac -n gamehub --set image.tag="<上一步输出的版本号>"
+VERSION="$(tr -d '[:space:]' < deploy/version.txt)"
+helm upgrade gamemac oci://gamesirnanjing.asuscomm.com:5000/charts/gamemac \
+  --version "${VERSION}" -n gamehub --plain-http \
+  --reuse-values --set image.tag="${VERSION}" --wait --timeout 5m
 
 # 6. 如需卸载
 helm uninstall gamemac -n gamehub
