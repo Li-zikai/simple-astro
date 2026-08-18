@@ -9,8 +9,15 @@ CHART_DIR="${PROJECT_ROOT}/helm/gamemac"
 # 镜像 / Chart 配置
 REGISTRY="gamesirnanjing.asuscomm.com:5000"
 IMAGE_NAME="gamehub/gamemac"
-CHART_OCI_REPO="oci://${REGISTRY}/gamehub"
+# Chart 与容器镜像必须使用不同的 OCI repository。若都推送到
+# gamehub/gamemac:<VERSION>，Helm Chart manifest 会覆盖镜像 manifest。
+CHART_OCI_REPO="oci://${REGISTRY}/charts"
 CHART_NAME="gamemac"
+
+if [[ "${CHART_OCI_REPO#oci://}/${CHART_NAME}" == "${REGISTRY}/${IMAGE_NAME}" ]]; then
+  echo "Helm Chart repository 不能与容器镜像 repository 相同" >&2
+  exit 1
+fi
 
 validate_version() {
   local version="$1"

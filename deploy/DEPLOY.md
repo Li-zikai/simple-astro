@@ -28,7 +28,7 @@ bash deploy/build.sh 1.1.4
 | 产物 | 地址 |
 |------|------|
 | 镜像 | `gamesirnanjing.asuscomm.com:5000/gamehub/gamemac:<版本号>` |
-| Chart | `oci://gamesirnanjing.asuscomm.com:5000/gamehub/gamemac:<版本号>` |
+| Chart | `oci://gamesirnanjing.asuscomm.com:5000/charts/gamemac:<版本号>` |
 
 版本文件：`deploy/version.txt`
 
@@ -54,7 +54,7 @@ helm upgrade --install gamemac ./helm/gamemac -n gamehub --create-namespace \
   --set image.tag="<上一步输出的版本号>"
 
 # 3b. 或使用已推送的 OCI Chart（image.tag 已内置为同版本）
-helm upgrade --install gamemac oci://gamesirnanjing.asuscomm.com:5000/gamehub/gamemac \
+helm upgrade --install gamemac oci://gamesirnanjing.asuscomm.com:5000/charts/gamemac \
   --version <上一步输出的版本号> \
   -n gamehub --create-namespace \
   --plain-http
